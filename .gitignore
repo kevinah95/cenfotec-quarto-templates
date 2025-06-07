@@ -1,0 +1,7 @@
+*.pdf
+.DS_Store
+
+/.luarc.json
+
+*.typ
+!**/_extensions/**/*.typ

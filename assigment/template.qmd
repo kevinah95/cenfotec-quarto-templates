@@ -1,0 +1,17 @@
+---
+header-image:
+  path: "header.png"
+  caption: "Award winning science"
+format:
+  assigment-typst:
+    keep-typ: true
+---
+
+# Datos generales de la actividad
+
+# Instrucciones generales
+1. Lea cuidadosamente las instrucciones de la actividad, en caso de tener alguna duda puede consultar con el docente.
+1. Esta actividad se desarrolla de manera individual o grupal (de acuerdo con lo especificado en los datos generales), cualquier intento de plagio será sancionado de acuerdo con el reglamento académico vigente.
+1. Al completar la actividad, debe subir la solución en la plataforma Moodle en el formato, tiempo y espacio indicado por el docente.
+
+# Objetivos o competencias del curso que se evaluarán en la actividad de aprendizaje
