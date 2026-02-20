@@ -96,6 +96,8 @@ quarto render tu-archivo.qmd
 
 ## 📸 Resultado
 
+Este es el pdf generaddo: [PDF](../docs/assigment/output/template.pdf)
+
 El documento generado incluye:
 
 ![Página 01](../docs/assigment/img/p01.png)

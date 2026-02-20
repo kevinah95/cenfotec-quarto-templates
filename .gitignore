@@ -1,4 +1,5 @@
 *.pdf
+!/docs/assigment/output/template.pdf
 .DS_Store
 
 /.luarc.json
