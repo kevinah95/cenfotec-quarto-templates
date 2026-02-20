@@ -11,13 +11,17 @@ that you can use as a starting place for your document.
 
 ## Using
 
+**Nota:** El header, footer y logo están embebidos en la plantilla y no son configurables.
+
 Specify the parameters using YAML options, then write the body of the assigment. For example, the following qmd source:
 
 ```yaml
 ---
-header-image:
-  path: "header.png"
-  caption: "Award winning science"
+# Course information
+school: "Software"
+course-code: "BISOFT-38"
+course-name: "Proyecto de Ing. de Software 4"
+
 format:
   assigment-typst: default
 ---

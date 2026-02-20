@@ -1,11 +1,4 @@
 ---
-header-image:
-  path: "header.png"
-footer-image:
-  path: "footer.png"
-logo-image:
-  path: "logo.png"
-
 # Course information
 school: "Software"
 course-code: "BISOFT-38"

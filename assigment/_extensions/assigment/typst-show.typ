@@ -1,15 +1,12 @@
 
 #show: assigment.with(
-$if(header-image)$
+  // Imágenes embebidas (no configurables)
   header-image: (
-    image: image("$header-image.path$", width: 100%),
+    image: image("header.png", width: 100%),
   ),
-$endif$
-$if(logo-image)$
   logo-image: (
-    image: image("$logo-image.path$", width: 100%),
+    image: image("logo.png", width: 100%),
   ),
-$endif$
 $if(school)$
   school: [$school$],
 $endif$
@@ -84,9 +81,8 @@ $for(rubric-criteria)$
 $endfor$
   ),
 $endif$
-$if(footer-image)$
+  // Footer embebido (no configurable)
   footer-image: (
-    image: image("$footer-image.path$", width: 100%),
+    image: image("footer.png", width: 100%),
   ),
-$endif$
 )
