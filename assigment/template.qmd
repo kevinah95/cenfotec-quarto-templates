@@ -82,7 +82,7 @@ rubric-criteria:
     excellent: "Incorpora la retroalimentación brindada por el docente de manera clara y completa"
 
 # Cambiar a true para mostrar las notas en la plantilla
-show-instructions-note: true
+show-instructions-note: false
 
 format:
   assigment-typst:

@@ -6,3 +6,12 @@ tasks:
   debug:assignment:
     cmds:
       - quarto preview assigment/template.qmd --trace
+  clean:
+    cmds:
+      - rm -rf assigment/.quarto
+      - rm -rf assigment/footer.png
+      - rm -rf assigment/header.png
+      - rm -rf assigment/logo.png
+      - rm -rf assigment/template.pdf
+      - rm -rf assigment/template.typ
+      - rm -rf output.typ
