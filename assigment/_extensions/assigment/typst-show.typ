@@ -52,6 +52,13 @@ $endif$
 $if(show-instructions-note)$
   show-instructions-note: $show-instructions-note$,
 $endif$
+$if(general-instructions)$
+  general-instructions: [
+$for(general-instructions)$
+    + $general-instructions$
+$endfor$
+  ],
+$endif$
 $if(general-objective)$
   general-objective: [$general-objective$],
 $endif$

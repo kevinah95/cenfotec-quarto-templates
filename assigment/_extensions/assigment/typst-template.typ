@@ -4,7 +4,7 @@
   table(
     columns: (1fr, 1fr, 1fr, 1fr),
     align: (left, left, left, left),
-    stroke: 0pt + black,
+    stroke: 1pt + black,
     inset: 6pt,
 
     table.cell(colspan: 4)[
@@ -100,6 +100,8 @@
   group: none, // true, false, or none
   // Instructions note
   show-instructions-note: false,
+  // General instructions
+  general-instructions: none,
   // Objectives
   general-objective: none,
   specific-objectives: none,
@@ -218,7 +220,9 @@
   if show-instructions-note [
     _Estas instrucciones pueden ser adaptadas según las especificaciones del curso o de la actividad_
   ]
-  [
+  if general-instructions != none [
+    #general-instructions
+  ] else [
     + Lea cuidadosamente las instrucciones de la actividad, en caso de tener alguna duda puede consultar con el docente.
     + Esta actividad se desarrolla de manera individual o grupal (de acuerdo con lo especificado en los datos generales), cualquier intento de plagio será sancionado de acuerdo con el reglamento académico vigente.
     + Al completar la actividad, debe subir la solución en la plataforma Moodle en el formato, tiempo y espacio indicado por el docente.
@@ -250,7 +254,7 @@
     [Esta actividad de aprendizaje será evaluada mediante la siguiente rúbrica:]
     v(0.5em)
     if show-instructions-note [
-      #highlight[_Usted debe copiar la rúbrica indicada para esta actividad de aprendizaje según lo definido en el programa del curso. Recuerde respetar la rúbrica definida. A continuación se presenta una **rúbrica de ejemplo** (para borrar esta nota vea el texto marcado al inicio del documento)._]
+      #highlight[_Usted debe copiar la rúbrica indicada para esta actividad de aprendizaje según lo definido en el programa del curso. Recuerde respetar la rúbrica definida. A continuación se presenta una *rúbrica de ejemplo* (para borrar esta nota vea el texto marcado al inicio del documento)._]
       #v(0.5em)
     ]
     rubric-table(rubric-criteria)

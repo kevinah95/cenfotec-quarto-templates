@@ -1,28 +1,44 @@
 ---
-# Course information
-school: "Software"
+# Información del curso
+school: "Software" # Software, Fundamentos, TI, SINT, etc.
 course-code: "BISOFT-38"
 course-name: "Proyecto de Ing. de Software 4"
 tsection: "SCV2"
 period: "Q02"
-instructor: "Kevin A. Hernández Rostrán"
+instructor: "Clive Staples Lewis"
 
-# Objectives
-general-objective: "Analizar la evolución y los principales componentes de las tecnologías de información y comunicación, reconociendo los elementos tecnológicos y sus elementos asociados, tanto físicos como lógicos, de Hardware y de Software para valorar la función de estas tecnologías puestas al servicio del ser humano."
-specific-objectives: |
-  - Comprender los conceptos fundamentales sobre los que se sustentan los modelos de las tecnologías de información y comunicación.
-  - Explicar el funcionamiento básico de las computadoras, de las redes de computadoras y de sus componentes.
-
-# Activity title and details
+# 1. Datos generales de la actividad
 activity-title: "Proyecto KMP"
-activity-type: "Práctica"
+activity-type: "Práctica" # Resolución de problemas, estudio de caso, práctica, presentación, avance de proyecto, laboratorio, taller, infografía, portafolio, tarea, etc.
 due-date: "27/02/2026 11:59PM"
-percentage: "7.5%"
+percentage: "7.5%" # xx.x%
 tformat: "PDF" # PDF, DOCX, ZIP, video, código, etc.
 total-points: "100"
 individual: true
 group: false
 
+# 2. Instrucciones generales
+general-instructions:
+  - "Lea cuidadosamente las instrucciones de la actividad, en caso de tener alguna duda puede consultar con el docente."
+  - "Esta actividad se desarrolla de manera individual o grupal (de acuerdo con lo especificado en los datos generales), cualquier intento de plagio será sancionado de acuerdo con el reglamento académico vigente."
+  - "Al completar la actividad, debe subir la solución en la plataforma Moodle en el formato, tiempo y espacio indicado por el docente."
+
+# 3. Objetivos
+general-objective: "Analizar la evolución y los principales componentes de las tecnologías de información y comunicación, reconociendo los elementos tecnológicos y sus elementos asociados, tanto físicos como lógicos, de Hardware y de Software para valorar la función de estas tecnologías puestas al servicio del ser humano."
+specific-objectives: | # Mantener este pipe para que la lista se mantenga en la celda
+  - Comprender los conceptos fundamentales sobre los que se sustentan los modelos de las tecnologías de información y comunicación.
+  - Explicar el funcionamiento básico de las computadoras, de las redes de computadoras y de sus componentes.
+
+
+# 4. Descripción de la actividad
+activity-context: "Coloque aquí una descripción sobre la actividad que deben realizar los estudiantes."
+activity-instructions:
+  - "Elabore un diagrama general del programa que desarrollará, además las tablas de datos de entrada, salida, intermedios y constantes."
+  - "Elabore paso a paso el diagrama explicativo, debe contener todo lo abarcado en el curso."
+  - "Realice el diagrama de flujo de la solución del problema, tome en consideración que debe utilizar los elementos correctos según la función que vaya a desempeñar."
+  - "Utilice el programa Diagrams.net para la elaboración del diagrama de flujo."
+
+# 5. Rúbrica
 rubric-criteria:
   - criteria: "Objetivo y temática del proyecto"
     deficient: "Incorpora el objetivo y temática del proyecto de manera inadecuada"
@@ -65,16 +81,8 @@ rubric-criteria:
     good: "Incorpora la retroalimentación brindada por el docente de manera incompleta"
     excellent: "Incorpora la retroalimentación brindada por el docente de manera clara y completa"
 
-# Activity description
-activity-context: "Coloque aquí una descripción sobre la actividad que deben realizar los estudiantes."
-activity-instructions:
-  - "Elabore un diagrama general del programa que desarrollará, además las tablas de datos de entrada, salida, intermedios y constantes."
-  - "Elabore paso a paso el diagrama explicativo, debe contener todo lo abarcado en el curso."
-  - "Realice el diagrama de flujo de la solución del problema, tome en consideración que debe utilizar los elementos correctos según la función que vaya a desempeñar."
-  - "Utilice el programa Diagrams.net para la elaboración del diagrama de flujo."
-
-# Set to true to show the note about adapting general instructions (useful for template documentation)
-show-instructions-note: false
+# Cambiar a true para mostrar las notas en la plantilla
+show-instructions-note: true
 
 format:
   assigment-typst:
