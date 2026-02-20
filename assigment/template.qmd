@@ -2,6 +2,25 @@
 header-image:
   path: "header.png"
   caption: "Award winning science"
+
+# Course information
+school: "Software"
+course-code: "BISOFT-38"
+course-name: "Proyecto de Ing. de Software 4"
+tsection: "SCV2"
+period: "Q02"
+instructor: "Kevin A. Hernández Rostrán"
+
+# Activity title and details
+activity-title: "Proyecto"
+activity-type: ""
+due-date: "May 7, 2025 11:45 PM"
+percentage: ""
+tformat: ""
+total-points: ""
+individual: false
+group: false
+
 rubric-criteria:
   - criteria: "Objetivo y temática del proyecto"
     deficient: "Incorpora el objetivo y temática del proyecto de manera inadecuada"
@@ -48,24 +67,62 @@ format:
     keep-typ: true
 ---
 
-## Datos generales de la actividad
-
 ## Instrucciones generales
+
+*Estas instrucciones pueden ser adaptadas según las especificaciones del curso o de la actividad*
+
 1. Lea cuidadosamente las instrucciones de la actividad, en caso de tener alguna duda puede consultar con el docente.
 1. Esta actividad se desarrolla de manera individual o grupal (de acuerdo con lo especificado en los datos generales), cualquier intento de plagio será sancionado de acuerdo con el reglamento académico vigente.
 1. Al completar la actividad, debe subir la solución en la plataforma Moodle en el formato, tiempo y espacio indicado por el docente.
 
 ## Objetivos o competencias del curso que se evaluarán en la actividad de aprendizaje
 
+### Objetivo general o competencia del curso
+
+*Coloque aquí el objetivo general o la competencia indicada en el programa del curso*
+
+### Objetivos específicos o resultados de aprendizaje que se evalúan
+
+*Coloque aquí todos los objetivos específicos o los resultados de aprendizaje indicados en el programa del curso que se relacionan con esta actividad*
+
+#### Ejemplo para curso por Objetivos (borre este ejemplo al crear la consigna de cada actividad):
+
+**INF-01 Introducción a la TI**
+
+**Objetivo general del curso**
+
+Analizar la evolución y los principales componentes de las tecnologías de información y comunicación, reconociendo los elementos tecnológicos y sus elementos asociados, tanto físicos como lógicos, de Hardware y de Software para valorar la función de estas tecnologías puestas al servicio del ser humano.
+
+**Objetivos específicos que se evalúan**
+
+- Comprender los conceptos fundamentales sobre los que se sustentan los modelos de las tecnologías de información y comunicación, distinguiendo entre dato, información, comunicación, sistema, hardware, software para emplear los conocimientos en sistemas de información y telecomunicación.
+- Explicar el funcionamiento básico de las computadoras, de las redes de computadoras y de sus componentes, analizando la interrelación entre el hardware y el software que las componen y los conceptos fundamentales de interconexión para asegurar la correcta operación entre todos los elementos que las conforman.
+
+#### Ejemplo para curso por Competencias (borre este ejemplo al crear la consigna de cada actividad):
+
+**FUN-01 Introducción a la TI**
+
+**Competencia del curso**
+
+Analizar las principales áreas disciplinares de la computación e informática para la comprensión de un panorama general sobre las tecnologías de información y comunicación, implementando los procesos de una propuesta tecnológica de forma ingeniosa y colaborativa.
+
+**Resultados de aprendizaje que se evalúan**
+
+Desarrolla un proyecto de tecnología, solucionando una problemática de complejidad baja en un contexto real que requiera los procesos del diseño estructurado y la programación básica de microcontroladores.
+
 ## Descripción de la actividad
-**Contexto**: Coloque aquí una descripción sobre la actividad que deben realizar los estudiantes.
+**Contexto**: *Coloque aquí una descripción sobre la actividad que deben realizar los estudiantes.*
 
-### Instrucciones
+**Instrucciones:**
 
-1.	Elabore un diagrama general del programa que desarrollará, además las tablas de datos de entrada, salida, intermedios y constantes.
-2.	Elabore paso a paso el diagrama explicativo, debe contener todo lo abarcado en el curso.
-3.	Realice el diagrama de flujo de la solución del problema, tome en consideración que debe utilizar los elementos correctos según la función que vaya a desempeñar.
-4.	Utilice el programa Diagrams.net para la elaboración del diagrama de flujo.
+1. Elabore un diagrama general del programa que desarrollará, además las tablas de datos de entrada, salida, intermedios y constantes.
+1. Elabore paso a paso el diagrama explicativo, debe contener todo lo abarcado en el curso.
+1. Realice el diagrama de flujo de la solución del problema, tome en consideración que debe utilizar los elementos correctos según la función que vaya a desempeñar.
+1. Utilice el programa Diagrams.net para la elaboración del diagrama de flujo.
 
 ## Rúbrica
+
 Esta actividad de aprendizaje será evaluada mediante la siguiente rúbrica:
+
+*Usted debe copiar la rúbrica indicada para esta actividad de aprendizaje según lo definido en el programa del curso. Recuerde respetar la rúbrica definida. A continuación se presenta una **rúbrica de ejemplo** (borre este ejemplo al crear la consigna de cada actividad):*
+
