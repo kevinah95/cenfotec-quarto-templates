@@ -1,7 +1,6 @@
 ---
 header-image:
   path: "header.png"
-  caption: "Award winning science"
 footer-image:
   path: "footer.png"
 
@@ -70,24 +69,22 @@ rubric-criteria:
     regular: "Incorpora la retroalimentación brindada por el docente de manera básica"
     good: "Incorpora la retroalimentación brindada por el docente de manera incompleta"
     excellent: "Incorpora la retroalimentación brindada por el docente de manera clara y completa"
+
+# Activity description
+activity-context: "Coloque aquí una descripción sobre la actividad que deben realizar los estudiantes."
+activity-instructions:
+  - "Elabore un diagrama general del programa que desarrollará, además las tablas de datos de entrada, salida, intermedios y constantes."
+  - "Elabore paso a paso el diagrama explicativo, debe contener todo lo abarcado en el curso."
+  - "Realice el diagrama de flujo de la solución del problema, tome en consideración que debe utilizar los elementos correctos según la función que vaya a desempeñar."
+  - "Utilice el programa Diagrams.net para la elaboración del diagrama de flujo."
+
+rubric-note: "Esta actividad de aprendizaje será evaluada mediante la siguiente rúbrica. Usted debe copiar la rúbrica indicada para esta actividad de aprendizaje según lo definido en el programa del curso. Recuerde respetar la rúbrica definida. A continuación se presenta una **rúbrica de ejemplo** (borre este ejemplo al crear la consigna de cada actividad)."
+
+# Set to true to show the note about adapting general instructions (useful for template documentation)
+show-instructions-note: true
+
 format:
   assigment-typst:
     keep-typ: true
 ---
-
-## Descripción de la actividad
-**Contexto**: *Coloque aquí una descripción sobre la actividad que deben realizar los estudiantes.*
-
-**Instrucciones:**
-
-1. Elabore un diagrama general del programa que desarrollará, además las tablas de datos de entrada, salida, intermedios y constantes.
-1. Elabore paso a paso el diagrama explicativo, debe contener todo lo abarcado en el curso.
-1. Realice el diagrama de flujo de la solución del problema, tome en consideración que debe utilizar los elementos correctos según la función que vaya a desempeñar.
-1. Utilice el programa Diagrams.net para la elaboración del diagrama de flujo.
-
-## Rúbrica
-
-Esta actividad de aprendizaje será evaluada mediante la siguiente rúbrica:
-
-*Usted debe copiar la rúbrica indicada para esta actividad de aprendizaje según lo definido en el programa del curso. Recuerde respetar la rúbrica definida. A continuación se presenta una **rúbrica de ejemplo** (borre este ejemplo al crear la consigna de cada actividad):*
 

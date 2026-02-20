@@ -1,5 +1,5 @@
 // Function to create activity details table
-#let activity-details-table(activity-type, due-date, percentage, tformat, total-points, individual, group) = {
+#let activity-details-table(activity-type, due-date, percentage, tformat, total-points, individual, group, show-instructions-note: false) = {
   set text(size: 9pt)
   table(
     columns: (1fr, 1fr, 1fr, 1fr),
@@ -8,13 +8,13 @@
     inset: 8pt,
 
     table.cell(colspan: 4)[
-      *Tipo de actividad:* (Resolución de problemas, estudio de caso, práctica, presentación, avance de proyecto, laboratorio, taller, infografía, portafolio, tarea, etc) #h(1em) #if activity-type != none { activity-type } else { [ ] }
+      *Tipo de actividad:* #if show-instructions-note [(Resolución de problemas, estudio de caso, práctica, presentación, avance de proyecto, laboratorio, taller, infografía, portafolio, tarea, etc)] #h(1em) #if activity-type != none { activity-type } else { [ ] }
     ],
 
     table.cell(colspan: 2)[*Fecha de entrega:* #h(1em) #if due-date != none { due-date } else { [] }],
     table.cell(colspan: 2)[*Valor porcentual:* #h(1em) #if percentage != none { percentage } else { [] }],
 
-    table.cell(colspan: 2)[*Formato de entrega:* (PDF, DOCX, ZIP, video, código, etc.) #h(1em) #if tformat != none { tformat } else { [] }],
+    table.cell(colspan: 2)[*Formato de entrega:* #if show-instructions-note [(PDF, DOCX, ZIP, video, código, etc.)] #h(1em) #if tformat != none { tformat } else { [] }],
     table.cell(colspan: 2)[*Puntaje total:* #h(1em) #if total-points != none { total-points } else { [] }],
 
     table.cell(colspan: 2)[*Individual:* #h(1em) #if individual != none and individual { [X] } else { [ ] }],
@@ -24,7 +24,6 @@
 
 // Function to create objectives table
 #let objectives-table(general-objective, specific-objectives) = {
-  set text(size: 10pt)
   table(
     columns: (1fr, 2fr),
     align: (center, left),
@@ -98,6 +97,10 @@
   group: none,
   general-objective: none,
   specific-objectives: none,
+  activity-context: none,
+  activity-instructions: none,
+  rubric-note: none,
+  show-instructions-note: false,
 ) = {
   // Configure page and text properties.
   set page(
@@ -147,6 +150,11 @@
   ]
   v(0.5em)
 
+  if show-instructions-note [
+    #highlight[_Los campos que se muestran a continuación pueden ser adaptados según las especificaciones del curso o de la actividad. Complete los campos que correspondan y deje en blanco los que no apliquen._
+    _Elimine las notas de instrucciones cambiando el valor de `show-instructions-note` a `false` al crear la consigna de cada actividad._]
+  ]
+
   // Course information table
   set text(size: 11pt)
   table(
@@ -181,11 +189,13 @@
 
   // Activity details table
   [= Datos generales de la actividad]
-  activity-details-table(activity-type, due-date, percentage, tformat, total-points, individual, group)
+  activity-details-table(activity-type, due-date, percentage, tformat, total-points, individual, group, show-instructions-note: show-instructions-note)
   v(1em)
 
   [= Instrucciones generales]
-  [_Estas instrucciones pueden ser adaptadas según las especificaciones del curso o de la actividad_]
+  if show-instructions-note [
+    _Estas instrucciones pueden ser adaptadas según las especificaciones del curso o de la actividad_
+  ]
   [
     + Lea cuidadosamente las instrucciones de la actividad, en caso de tener alguna duda puede consultar con el docente.
     + Esta actividad se desarrolla de manera individual o grupal (de acuerdo con lo especificado en los datos generales), cualquier intento de plagio será sancionado de acuerdo con el reglamento académico vigente.
@@ -195,14 +205,32 @@
 
   [= Objetivos o competencias del curso que se evaluarán en la actividad de aprendizaje]
   objectives-table(general-objective, specific-objectives)
+  v(1em)
 
-  body
+  // Descripción de la actividad
+  [= Descripción de la actividad]
+  if activity-context != none [
+    *Contexto:* #emph[#activity-context]
+    #v(0.5em)
+  ]
 
+  if activity-instructions != none [
+    *Instrucciones:*
+    #activity-instructions
+  ]
+  v(1em)
 
 
   // Renderizar rúbrica si existe
   if rubric-criteria != none {
     v(1em)
+    [= Rúbrica]
+    if rubric-note != none [
+      #rubric-note
+      #v(0.5em)
+    ]
     rubric-table(rubric-criteria)
   }
+
+  body
 }

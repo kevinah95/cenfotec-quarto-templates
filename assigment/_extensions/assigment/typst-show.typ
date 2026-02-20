@@ -3,7 +3,6 @@
 $if(header-image)$
   header-image: (
     image: image("$header-image.path$", width: 100%),
-    caption: [$header-image.caption$]
   ),
 $endif$
 $if(footer-image)$
@@ -58,6 +57,22 @@ $if(general-objective)$
 $endif$
 $if(specific-objectives)$
   specific-objectives: [$specific-objectives$],
+$endif$
+$if(activity-context)$
+  activity-context: [$activity-context$],
+$endif$
+$if(activity-instructions)$
+  activity-instructions: [
+$for(activity-instructions)$
+    + $activity-instructions$
+$endfor$
+  ],
+$endif$
+$if(rubric-note)$
+  rubric-note: [$rubric-note$],
+$endif$
+$if(show-instructions-note)$
+  show-instructions-note: $show-instructions-note$,
 $endif$
 $if(rubric-criteria)$
   rubric-criteria: (
