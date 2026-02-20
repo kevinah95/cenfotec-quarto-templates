@@ -8,4 +8,8 @@ contributes:
       template-partials:
         - typst-template.typ
         - typst-show.typ
+      format-resources:
+        - header.png
+        - footer.png
+        - logo.png
 

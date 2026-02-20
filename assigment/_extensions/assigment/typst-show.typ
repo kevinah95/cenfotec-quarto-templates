@@ -2,10 +2,10 @@
 #show: assigment.with(
   // Imágenes embebidas (no configurables)
   header-image: (
-    image: image("_extensions/assigment/header.png", width: 100%),
+    image: image("header.png", width: 100%),
   ),
   logo-image: (
-    image: image("_extensions/assigment/logo.png", width: 100%),
+    image: image("logo.png", width: 100%),
   ),
 $if(school)$
   school: [$school$],
@@ -83,6 +83,6 @@ $endfor$
 $endif$
   // Footer embebido (no configurable)
   footer-image: (
-    image: image("_extensions/assigment/footer.png", width: 100%),
+    image: image("footer.png", width: 100%),
   ),
 )
