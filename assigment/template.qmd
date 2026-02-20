@@ -2,16 +2,70 @@
 header-image:
   path: "header.png"
   caption: "Award winning science"
+rubric-criteria:
+  - criteria: "Objetivo y temática del proyecto"
+    deficient: "Incorpora el objetivo y temática del proyecto de manera inadecuada"
+    regular: "Incorpora el objetivo y temática del proyecto de manera básica"
+    good: "Incorpora el objetivo y temática de forma adecuada"
+    excellent: "Incorpora el objetivo y temática del proyecto de forma clara, explícita y rigurosa"
+  - criteria: "Implementación algorítmica con lógica-matemática"
+    deficient: "Relaciona la lógica-matemática en la implementación algorítmica de manera limitada e insuficiente"
+    regular: "Relaciona la lógica-matemática en la implementación algorítmica de manera limitada y básica"
+    good: "Relaciona la lógica-matemática en la implementación algorítmica de manera adecuada"
+    excellent: "Relaciona la lógica-matemática en la implementación algorítmica de manera clara, amplia y suficiente"
+  - criteria: "Diagramas de flujo y pseudocódigo de los algoritmos del programa"
+    deficient: "Elabora los diagramas de flujo y pseudocódigos mal planteados y sin coherencia"
+    regular: "Elabora los diagramas de flujo y pseudocódigos de manera básica y poco coherentes"
+    good: "Elabora los diagramas de flujo y pseudocódigos de manera adecuada"
+    excellent: "Elabora los diagramas y pseudocódigos de manera precisa y coherente"
+  - criteria: "Elementos aritméticos, condicionales y algebraicos en la implementación del programa"
+    deficient: "Incorpora elementos aritméticos, condicionales y algebraicos de forma incorrecta y sin coherencia"
+    regular: "Incorpora elementos aritméticos, condicionales y algebraicos de forma básica y poco coherente"
+    good: "Incorpora elementos aritméticos, condicionales y algebraicos de forma suficiente, pero le falta coherencia"
+    excellent: "Incorpora elementos aritméticos, condicionales y algebraicos de forma correcta y coherente"
+  - criteria: "Desarrollo del programa"
+    deficient: "Desarrolla el programa de manera incompleta, no se tienen en cuenta las condiciones indicadas"
+    regular: "Desarrolla el programa de manera completa y calcula lo que se pide con varios errores."
+    good: "Desarrolla el programa de manera completa y calcula lo que se pide con algún error"
+    excellent: "Desarrolla el programa de manera completa y calcula lo que se pide sin errores"
+  - criteria: "Funcionamiento del programa"
+    deficient: "Verifica la funcionalidad del programa por medio de casos de prueba de manera inapropiada y presenta múltiples errores"
+    regular: "Verifica la funcionalidad del programa por medio de casos de prueba de manera elemental y presenta varios errores"
+    good: "Verifica la funcionalidad del programa por medio de casos de prueba de manera regular y presenta algún error"
+    excellent: "Verifica la funcionalidad del programa por medio de casos de prueba de manera apropiada y no presenta errores"
+  - criteria: "Informe técnico"
+    deficient: "Elabora el informe técnico sin coherencia y sin orden"
+    regular: "Elabora el informe técnico de manera coherente, pero está incompleto"
+    good: "Elabora el informe técnico de manera coherente, está completo, pero falta profundidad"
+    excellent: "Elabora el informe técnico de manera coherente, clara, amplia y está completo"
+  - criteria: "Retroalimentación del docente"
+    deficient: "Incorpora la retroalimentación brindada por el docente de forma incoherente y escasa"
+    regular: "Incorpora la retroalimentación brindada por el docente de manera básica"
+    good: "Incorpora la retroalimentación brindada por el docente de manera incompleta"
+    excellent: "Incorpora la retroalimentación brindada por el docente de manera clara y completa"
 format:
   assigment-typst:
     keep-typ: true
 ---
 
-# Datos generales de la actividad
+## Datos generales de la actividad
 
-# Instrucciones generales
+## Instrucciones generales
 1. Lea cuidadosamente las instrucciones de la actividad, en caso de tener alguna duda puede consultar con el docente.
 1. Esta actividad se desarrolla de manera individual o grupal (de acuerdo con lo especificado en los datos generales), cualquier intento de plagio será sancionado de acuerdo con el reglamento académico vigente.
 1. Al completar la actividad, debe subir la solución en la plataforma Moodle en el formato, tiempo y espacio indicado por el docente.
 
-# Objetivos o competencias del curso que se evaluarán en la actividad de aprendizaje
+## Objetivos o competencias del curso que se evaluarán en la actividad de aprendizaje
+
+## Descripción de la actividad
+**Contexto**: Coloque aquí una descripción sobre la actividad que deben realizar los estudiantes.
+
+### Instrucciones
+
+1.	Elabore un diagrama general del programa que desarrollará, además las tablas de datos de entrada, salida, intermedios y constantes.
+2.	Elabore paso a paso el diagrama explicativo, debe contener todo lo abarcado en el curso.
+3.	Realice el diagrama de flujo de la solución del problema, tome en consideración que debe utilizar los elementos correctos según la función que vaya a desempeñar.
+4.	Utilice el programa Diagrams.net para la elaboración del diagrama de flujo.
+
+## Rúbrica
+Esta actividad de aprendizaje será evaluada mediante la siguiente rúbrica:

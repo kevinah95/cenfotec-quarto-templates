@@ -6,4 +6,17 @@ $if(header-image)$
     caption: [$header-image.caption$]
   ),
 $endif$
+$if(rubric-criteria)$
+  rubric-criteria: (
+$for(rubric-criteria)$
+    (
+      criteria: [$rubric-criteria.criteria$],
+      deficient: [$rubric-criteria.deficient$],
+      regular: [$rubric-criteria.regular$],
+      good: [$rubric-criteria.good$],
+      excellent: [$rubric-criteria.excellent$],
+    ),
+$endfor$
+  ),
+$endif$
 )

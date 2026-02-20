@@ -5,3 +5,5 @@
 
 *.typ
 !**/_extensions/**/*.typ
+
+/assigment/.quarto
