@@ -22,6 +22,32 @@
   )
 }
 
+// Function to create objectives table
+#let objectives-table(general-objective, specific-objectives) = {
+  set text(size: 10pt)
+  table(
+    columns: (1fr, 2fr),
+    align: (center, left),
+    fill: (col, row) => if col == 0 { rgb("#9CC8FF") } else { none },
+    stroke: 0.5pt + black,
+    inset: 8pt,
+
+    [*Objetivo general o competencia del curso*],
+    if general-objective != none {
+      general-objective
+    } else {
+      [Coloque aquí el objetivo general o la competencia indicada en el programa del curso]
+    },
+
+    [*Objetivos específicos o resultados de aprendizaje que se evalúan*],
+    if specific-objectives != none {
+      specific-objectives
+    } else {
+      [Coloque aquí todos los objetivos específicos o los resultados de aprendizaje indicados en el programa del curso que se relacionan con esta actividad]
+    },
+  )
+}
+
 // Function to create a rubric table based on provided criteria
 #let rubric-table(criteria) = {
   set text(size: 9pt)
@@ -54,14 +80,15 @@
 #let assigment(
   body,
   header-image: none,
+  footer-image: none,
   rubric-criteria: none,
-  school: "Software",
+  school: "Software, Fundamentos, TI, SINT, etc.",
   course-code: "BISOFT-38",
   course-name: "Proyecto de Ing. de Software 4",
   tsection: "SCV2",
   period: "Q02",
-  instructor: "Kevin A. Hernández Rostrán",
-  activity-title: "Proyecto",
+  instructor: "Clive Staples Lewis",
+  activity-title: "{Proyecto}",
   activity-type: none,
   due-date: none,
   percentage: none,
@@ -69,6 +96,8 @@
   total-points: none,
   individual: none,
   group: none,
+  general-objective: none,
+  specific-objectives: none,
 ) = {
   // Configure page and text properties.
   set page(
@@ -80,7 +109,7 @@
             dx: -2.54cm,
             box(
                 width: 21.59cm, // Ancho completo de carta US
-                height: 100%,
+                height: 3cm,
                 header-image.image
             )
         )
@@ -88,43 +117,88 @@
       none
     },
     header-ascent: 0%,
+    footer: [
+      #if footer-image != none {
+        place(
+          bottom,
+          dx: -2.54cm,
+          //dy: 0.5cm,
+          box(
+            width: 21.59cm, // Ancho completo de carta US
+            height: 3cm,
+            footer-image.image
+          )
+        )
+      }
+      #align(right, context counter(page).display("1"))
+    ],
   )
   set text(font: "Arial")
   set heading(numbering: "1.a.")
+  show heading: set text(fill: rgb("#164A98"))
   set enum(indent: .5cm)
   set par(
     spacing: 1.15em,
   )
 
-[
-  #set table(
-    stroke: none,
-    gutter: 0.2em,
-    inset: (right: 1.5em),
-  )
-  #table(
-    columns: 5,
-    align: (center,right,left,center),
-    [], [Escuela de], [#school], [], [],
+  // Universidad CENFOTEC header
+  align(center)[
+    #text(size: 16pt, weight: "bold", fill: rgb("#164A98"))[Universidad CENFOTEC]
+  ]
+  v(0.5em)
 
-    [], [Código del curso], [#course-code], [], [],
-    [], [Nombre del curso], [#course-name], [], [],
-    [], [Sección], [#tsection], [Período], [#period],
-    [], [Docente facilitador], [#instructor], [], [],
+  // Course information table
+  set text(size: 11pt)
+  table(
+    columns: (auto, 1fr),
+    stroke: none,
+    inset: 0.3em,
+    align: (left, left),
+
+    [Escuela de:], [#school],
+    [Código del curso:], [#box(stroke: (bottom: 0.5pt), inset: (bottom: 2pt), width: 100%)[#course-code]],
+    [Nombre del curso:], [#box(stroke: (bottom: 0.5pt), inset: (bottom: 2pt), width: 100%)[#course-name]],
   )
-]
+
+  // Section and period on same line
+  grid(
+    columns: (1fr, 1fr),
+    gutter: 1em,
+    [Sección: #box(stroke: (bottom: 0.5pt), inset: (bottom: 2pt))[#tsection]],
+    [Periodo: #box(stroke: (bottom: 0.5pt), inset: (bottom: 2pt))[#period]],
+  )
+
+  // Instructor
+  [Docente facilitador: #box(stroke: (bottom: 0.5pt), inset: (bottom: 2pt), width: 1fr)[#instructor]]
+
+  v(1em)
 
   // Activity title
   align(center)[
-    #text(size: 14pt, weight: "bold")[CONSIGNA DE #upper(activity-title)]
+    #text(size: 14pt, weight: "bold", fill: rgb("#164A98"))[CONSIGNA DE #(activity-title)]
   ]
   v(1em)
 
   // Activity details table
+  [= Datos generales de la actividad]
   activity-details-table(activity-type, due-date, percentage, tformat, total-points, individual, group)
   v(1em)
 
+  [= Instrucciones generales]
+  [_Estas instrucciones pueden ser adaptadas según las especificaciones del curso o de la actividad_]
+  [
+    + Lea cuidadosamente las instrucciones de la actividad, en caso de tener alguna duda puede consultar con el docente.
+    + Esta actividad se desarrolla de manera individual o grupal (de acuerdo con lo especificado en los datos generales), cualquier intento de plagio será sancionado de acuerdo con el reglamento académico vigente.
+    + Al completar la actividad, debe subir la solución en la plataforma Moodle en el formato, tiempo y espacio indicado por el docente.
+  ]
+
+
+  [= Objetivos o competencias del curso que se evaluarán en la actividad de aprendizaje]
+  objectives-table(general-objective, specific-objectives)
+
   body
+
+
 
   // Renderizar rúbrica si existe
   if rubric-criteria != none {

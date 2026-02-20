@@ -6,6 +6,11 @@ $if(header-image)$
     caption: [$header-image.caption$]
   ),
 $endif$
+$if(footer-image)$
+  footer-image: (
+    image: image("$footer-image.path$", width: 100%),
+  ),
+$endif$
 $if(school)$
   school: [$school$],
 $endif$
@@ -47,6 +52,12 @@ $if(individual)$
 $endif$
 $if(group)$
   group: $group$,
+$endif$
+$if(general-objective)$
+  general-objective: [$general-objective$],
+$endif$
+$if(specific-objectives)$
+  specific-objectives: [$specific-objectives$],
 $endif$
 $if(rubric-criteria)$
   rubric-criteria: (
