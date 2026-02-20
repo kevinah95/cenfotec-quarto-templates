@@ -5,11 +5,6 @@ $if(header-image)$
     image: image("$header-image.path$", width: 100%),
   ),
 $endif$
-$if(footer-image)$
-  footer-image: (
-    image: image("$footer-image.path$", width: 100%),
-  ),
-$endif$
 $if(logo-image)$
   logo-image: (
     image: image("$logo-image.path$", width: 100%),
@@ -57,6 +52,9 @@ $endif$
 $if(group)$
   group: $group$,
 $endif$
+$if(show-instructions-note)$
+  show-instructions-note: $show-instructions-note$,
+$endif$
 $if(general-objective)$
   general-objective: [$general-objective$],
 $endif$
@@ -73,9 +71,6 @@ $for(activity-instructions)$
 $endfor$
   ],
 $endif$
-$if(show-instructions-note)$
-  show-instructions-note: $show-instructions-note$,
-$endif$
 $if(rubric-criteria)$
   rubric-criteria: (
 $for(rubric-criteria)$
@@ -87,6 +82,11 @@ $for(rubric-criteria)$
       excellent: [$rubric-criteria.excellent$],
     ),
 $endfor$
+  ),
+$endif$
+$if(footer-image)$
+  footer-image: (
+    image: image("$footer-image.path$", width: 100%),
   ),
 $endif$
 )

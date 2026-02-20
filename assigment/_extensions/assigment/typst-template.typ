@@ -11,8 +11,6 @@
       *Tipo de actividad:* #if show-instructions-note [(Resolución de problemas, estudio de caso, práctica, presentación, avance de proyecto, laboratorio, taller, infografía, portafolio, tarea, etc)] #h(1em) #if activity-type != none { activity-type } else { [ ] }
     ],
 
-    //[#box(stroke: (bottom: 1pt), inset: (bottom: 2pt), width: 100%)[#school]]
-
     table.cell(colspan: 2)[*Fecha de entrega:* #h(1em) #if due-date != none { due-date } else { [] }],
     table.cell(colspan: 2)[*Valor porcentual:* #h(1em) #if percentage != none { percentage } else { [] }],
 
@@ -80,29 +78,38 @@
 // This function gets your whole document as its `body`
 #let assigment(
   body,
+  // Header
   header-image: none,
-  footer-image: none,
+  // Logo and course information
   logo-image: none,
-  rubric-criteria: none,
   school: "Software, Fundamentos, TI, SINT, etc.",
   course-code: "BISOFT-38",
   course-name: "Proyecto de Ing. de Software 4",
   tsection: "SCV2",
   period: "Q02",
   instructor: "Clive Staples Lewis",
+  // Activity title
   activity-title: "{Proyecto}",
-  activity-type: none,
-  due-date: none,
-  percentage: none,
-  tformat: none,
-  total-points: none,
-  individual: none,
-  group: none,
+  // Activity details (Datos generales)
+  activity-type: "{Resolución de problemas, estudio de caso, práctica, presentación, avance de proyecto, laboratorio, taller, infografía, portafolio, tarea, etc}",
+  due-date: "dd/mm/aaaa a las hh:mm am/pm",
+  percentage: "xx%",
+  tformat: "{PDF, DOCX, ZIP, video, código, etc}",
+  total-points: "100",
+  individual: none, // true, false, or none
+  group: none, // true, false, or none
+  // Instructions note
+  show-instructions-note: false,
+  // Objectives
   general-objective: none,
   specific-objectives: none,
+  // Activity description
   activity-context: none,
   activity-instructions: none,
-  show-instructions-note: false,
+  // Rubric
+  rubric-criteria: none,
+  // Footer
+  footer-image: none,
 ) = {
   // Configure page and text properties.
   set page(
