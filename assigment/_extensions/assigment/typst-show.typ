@@ -68,9 +68,6 @@ $for(activity-instructions)$
 $endfor$
   ],
 $endif$
-$if(rubric-note)$
-  rubric-note: [$rubric-note$],
-$endif$
 $if(show-instructions-note)$
   show-instructions-note: $show-instructions-note$,
 $endif$

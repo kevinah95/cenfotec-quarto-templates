@@ -99,7 +99,6 @@
   specific-objectives: none,
   activity-context: none,
   activity-instructions: none,
-  rubric-note: none,
   show-instructions-note: false,
 ) = {
   // Configure page and text properties.
@@ -225,8 +224,10 @@
   if rubric-criteria != none {
     v(1em)
     [= Rúbrica]
-    if rubric-note != none [
-      #rubric-note
+    [Esta actividad de aprendizaje será evaluada mediante la siguiente rúbrica:]
+    v(0.5em)
+    if show-instructions-note [
+      #highlight[_Usted debe copiar la rúbrica indicada para esta actividad de aprendizaje según lo definido en el programa del curso. Recuerde respetar la rúbrica definida. A continuación se presenta una **rúbrica de ejemplo** (para borrar esta nota vea el texto marcado al inicio del documento)._]
       #v(0.5em)
     ]
     rubric-table(rubric-criteria)

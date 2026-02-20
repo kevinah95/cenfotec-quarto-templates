@@ -78,8 +78,6 @@ activity-instructions:
   - "Realice el diagrama de flujo de la solución del problema, tome en consideración que debe utilizar los elementos correctos según la función que vaya a desempeñar."
   - "Utilice el programa Diagrams.net para la elaboración del diagrama de flujo."
 
-rubric-note: "Esta actividad de aprendizaje será evaluada mediante la siguiente rúbrica. Usted debe copiar la rúbrica indicada para esta actividad de aprendizaje según lo definido en el programa del curso. Recuerde respetar la rúbrica definida. A continuación se presenta una **rúbrica de ejemplo** (borre este ejemplo al crear la consigna de cada actividad)."
-
 # Set to true to show the note about adapting general instructions (useful for template documentation)
 show-instructions-note: true
 
