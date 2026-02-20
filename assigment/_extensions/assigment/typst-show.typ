@@ -10,6 +10,11 @@ $if(footer-image)$
     image: image("$footer-image.path$", width: 100%),
   ),
 $endif$
+$if(logo-image)$
+  logo-image: (
+    image: image("$logo-image.path$", width: 100%),
+  ),
+$endif$
 $if(school)$
   school: [$school$],
 $endif$

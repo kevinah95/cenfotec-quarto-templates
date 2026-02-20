@@ -1,15 +1,17 @@
 // Function to create activity details table
 #let activity-details-table(activity-type, due-date, percentage, tformat, total-points, individual, group, show-instructions-note: false) = {
-  set text(size: 9pt)
+  //set text(size: 9pt)
   table(
     columns: (1fr, 1fr, 1fr, 1fr),
     align: (left, left, left, left),
-    stroke: 0.5pt + black,
-    inset: 8pt,
+    stroke: 0pt + black,
+    inset: 6pt,
 
     table.cell(colspan: 4)[
       *Tipo de actividad:* #if show-instructions-note [(Resolución de problemas, estudio de caso, práctica, presentación, avance de proyecto, laboratorio, taller, infografía, portafolio, tarea, etc)] #h(1em) #if activity-type != none { activity-type } else { [ ] }
     ],
+
+    //[#box(stroke: (bottom: 1pt), inset: (bottom: 2pt), width: 100%)[#school]]
 
     table.cell(colspan: 2)[*Fecha de entrega:* #h(1em) #if due-date != none { due-date } else { [] }],
     table.cell(colspan: 2)[*Valor porcentual:* #h(1em) #if percentage != none { percentage } else { [] }],
@@ -80,6 +82,7 @@
   body,
   header-image: none,
   footer-image: none,
+  logo-image: none,
   rubric-criteria: none,
   school: "Software, Fundamentos, TI, SINT, etc.",
   course-code: "BISOFT-38",
@@ -147,38 +150,51 @@
   align(center)[
     #text(size: 16pt, weight: "bold", fill: rgb("#164A98"))[Universidad CENFOTEC]
   ]
-  v(0.5em)
+  v(2em)
 
   if show-instructions-note [
     #highlight[_Los campos que se muestran a continuación pueden ser adaptados según las especificaciones del curso o de la actividad. Complete los campos que correspondan y deje en blanco los que no apliquen._
     _Elimine las notas de instrucciones cambiando el valor de `show-instructions-note` a `false` al crear la consigna de cada actividad._]
   ]
 
-  // Course information table
-  set text(size: 11pt)
+  // Logo and Course information table
   table(
     columns: (auto, 1fr),
     stroke: none,
-    inset: 0.3em,
-    align: (left, left),
+    align: (top, left),
+    inset: (x: 0.5em, y: 0.3em),
 
-    [Escuela de:], [#school],
-    [Código del curso:], [#box(stroke: (bottom: 0.5pt), inset: (bottom: 2pt), width: 100%)[#course-code]],
-    [Nombre del curso:], [#box(stroke: (bottom: 0.5pt), inset: (bottom: 2pt), width: 100%)[#course-name]],
+    // Logo column
+    table.cell(
+      rowspan: 5,
+      if logo-image != none {
+        box(
+          width: 2.4cm,
+          logo-image.image
+        )
+      } else {
+        []
+      }
+    ),
+
+    // Course information
+    [
+      #table(
+        columns: (auto, 1fr),
+        stroke: none,
+        inset: 0.3em,
+        align: (left, left),
+
+        [*Escuela de:*], [#box(stroke: (bottom: 1pt), inset: (bottom: 2pt), width: 100%)[#school]],
+        [*Código del curso:*], [#box(stroke: (bottom: 1pt), inset: (bottom: 2pt), width: 100%)[#course-code]],
+        [*Nombre del curso:*], [#box(stroke: (bottom: 1pt), inset: (bottom: 2pt), width: 100%)[#course-name]],
+        [*Sección:*], [#box(stroke: (bottom: 1pt), inset: (bottom: 2pt), width: 100%)[#tsection]],
+        [*Periodo:*], [#box(stroke: (bottom: 1pt), inset: (bottom: 2pt), width: 100%)[#period]],
+        [*Docente facilitador:*], [#box(stroke: (bottom: 1pt), inset: (bottom: 2pt), width: 100%)[#instructor]],
+      )
+    ],
   )
 
-  // Section and period on same line
-  grid(
-    columns: (1fr, 1fr),
-    gutter: 1em,
-    [Sección: #box(stroke: (bottom: 0.5pt), inset: (bottom: 2pt))[#tsection]],
-    [Periodo: #box(stroke: (bottom: 0.5pt), inset: (bottom: 2pt))[#period]],
-  )
-
-  // Instructor
-  [Docente facilitador: #box(stroke: (bottom: 0.5pt), inset: (bottom: 2pt), width: 1fr)[#instructor]]
-
-  v(1em)
 
   // Activity title
   align(center)[

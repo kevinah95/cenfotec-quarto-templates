@@ -3,6 +3,8 @@ header-image:
   path: "header.png"
 footer-image:
   path: "footer.png"
+logo-image:
+  path: "logo.png"
 
 # Course information
 school: "Software"
@@ -19,13 +21,13 @@ specific-objectives: |
   - Explicar el funcionamiento básico de las computadoras, de las redes de computadoras y de sus componentes.
 
 # Activity title and details
-activity-title: "Proyecto"
-activity-type: ""
-due-date: "May 7, 2025 11:45 PM"
-percentage: ""
-tformat: ""
-total-points: ""
-individual: false
+activity-title: "Proyecto KMP"
+activity-type: "Práctica"
+due-date: "27/02/2026 11:59PM"
+percentage: "7.5%"
+tformat: "PDF" # PDF, DOCX, ZIP, video, código, etc.
+total-points: "100"
+individual: true
 group: false
 
 rubric-criteria:
@@ -79,7 +81,7 @@ activity-instructions:
   - "Utilice el programa Diagrams.net para la elaboración del diagrama de flujo."
 
 # Set to true to show the note about adapting general instructions (useful for template documentation)
-show-instructions-note: true
+show-instructions-note: false
 
 format:
   assigment-typst:
