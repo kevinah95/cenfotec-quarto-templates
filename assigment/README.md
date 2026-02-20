@@ -38,4 +38,6 @@ format:
 
 This document would be rendered as:
 
-![](assigment.png)
+![Página 01](docs/img/p01.png)
+![Página 02](docs/img/p02.png)
+![Página 03](docs/img/p03.png)
