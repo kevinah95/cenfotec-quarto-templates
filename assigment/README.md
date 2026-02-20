@@ -1,43 +1,108 @@
-# Assigment Format
+# Plantilla de Consignas - Universidad CENFOTEC
 
-## Installing
+Plantilla Quarto para crear consignas de actividades académicas con formato profesional en PDF.
+
+## 📦 Instalación
 
 ```bash
 quarto use template kevinah95/cenfotec-quarto-templates/assigment
 ```
 
-This will install the format extension and create an example qmd file
-that you can use as a starting place for your document.
+Este comando instalará la extensión y creará un archivo `.qmd` de ejemplo que puedes usar como punto de partida.
 
-## Using
+## ✨ Características
 
-**Nota:** El header, footer y logo están embebidos en la plantilla y no son configurables.
+- ✅ Header, footer y logo embebidos (no configurables)
+- ✅ Formato profesional de Universidad CENFOTEC
+- ✅ Tablas prediseñadas para objetivos y rúbricas
+- ✅ Personalización completa desde YAML
 
-Specify the parameters using YAML options, then write the body of the assigment. For example, the following qmd source:
+## 🚀 Uso Rápido
+
+Crea un archivo `.qmd` con la siguiente estructura:
 
 ```yaml
 ---
-# Course information
+# Información del curso
 school: "Software"
 course-code: "BISOFT-38"
 course-name: "Proyecto de Ing. de Software 4"
-
-format:
-  assigment-typst: default
----
+tsection: "SCV2"
+period: "Q02"
+instructor: "Clive Staples Lewis"
 
 # Datos generales de la actividad
+activity-title: "Proyecto KMP"
+activity-type: "Práctica"
+due-date: "27/02/2026 11:59PM"
+percentage: "7.5%"
+tformat: "PDF"
+total-points: "100"
+individual: true
+group: false
 
-# Instrucciones generales
-1. Lea cuidadosamente las instrucciones de la actividad, en caso de tener alguna duda puede consultar con el docente.
-1. Esta actividad se desarrolla de manera individual o grupal (de acuerdo con lo especificado en los datos generales), cualquier intento de plagio será sancionado de acuerdo con el reglamento académico vigente.
-1. Al completar la actividad, debe subir la solución en la plataforma Moodle en el formato, tiempo y espacio indicado por el docente.
+# Instrucciones generales (opcional)
+general-instructions:
+  - "Lea cuidadosamente las instrucciones de la actividad."
+  - "Cualquier intento de plagio será sancionado."
+  - "Suba la solución en Moodle en el formato indicado."
 
-# Objetivos o competencias del curso que se evaluarán en la actividad de aprendizaje
+# Objetivos
+general-objective: "Objetivo general del curso..."
+specific-objectives: |
+  - Primer objetivo específico
+  - Segundo objetivo específico
+
+# Descripción de la actividad
+activity-context: "Descripción del contexto de la actividad..."
+activity-instructions:
+  - "Primera instrucción"
+  - "Segunda instrucción"
+
+# Rúbrica
+rubric-criteria:
+  - criteria: "Criterio 1"
+    deficient: "Descripción nivel deficiente"
+    regular: "Descripción nivel regular"
+    good: "Descripción nivel bueno"
+    excellent: "Descripción nivel excelente"
+
+format:
+  assigment-typst:
+    keep-typ: true
+---
 ```
 
-This document would be rendered as:
+Luego renderiza el documento:
+
+```bash
+quarto render tu-archivo.qmd
+```
+
+## 📋 Parámetros Principales
+
+| Parámetro | Descripción | Requerido |
+|-----------|-------------|-----------|
+| `school` | Escuela (Software, TI, etc.) | ✅ |
+| `course-code` | Código del curso | ✅ |
+| `course-name` | Nombre del curso | ✅ |
+| `activity-title` | Título de la actividad | ✅ |
+| `activity-type` | Tipo (Práctica, Taller, etc.) | ✅ |
+| `due-date` | Fecha de entrega | ✅ |
+| `percentage` | Valor porcentual | ✅ |
+| `individual` / `group` | Modalidad | ✅ |
+| `general-instructions` | Lista de instrucciones | ⚠️ Opcional |
+| `rubric-criteria` | Criterios de evaluación | ⚠️ Opcional |
+
+## 📸 Resultado
+
+El documento generado incluye:
 
 ![Página 01](docs/img/p01.png)
+*Página 1: Información del curso y datos generales*
+
 ![Página 02](docs/img/p02.png)
+*Página 2: Objetivos y descripción de la actividad*
+
 ![Página 03](docs/img/p03.png)
+*Página 3: Rúbrica de evaluación*
