@@ -98,11 +98,11 @@ quarto render tu-archivo.qmd
 
 El documento generado incluye:
 
-![Página 01](docs/img/p01.png)
+![Página 01](../docs/img/p01.png)
 *Página 1: Información del curso y datos generales*
 
-![Página 02](docs/img/p02.png)
+![Página 02](../docs/img/p02.png)
 *Página 2: Objetivos y descripción de la actividad*
 
-![Página 03](docs/img/p03.png)
+![Página 03](../docs/img/p03.png)
 *Página 3: Rúbrica de evaluación*
