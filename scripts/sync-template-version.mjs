@@ -5,16 +5,20 @@ import { dirname, join } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const version = process.argv[2];
-if (!version) {
-  console.error('❌ Error: Version argument is required');
+const template = process.argv[2];
+const version = process.argv[3];
+
+if (!template || !version) {
+  console.error('❌ Error: Template name and version arguments are required');
+  console.error('Usage: node sync-template-version.mjs <template> <version>');
+  console.error('Example: node sync-template-version.mjs assigment 1.2.3');
   process.exit(1);
 }
 
-console.log(`🔄 Syncing version to ${version}...`);
+console.log(`🔄 Syncing ${template} template to version ${version}...`);
 
-// Update assigment/_extensions/assigment/_extension.yml
-const extensionYmlPath = join(__dirname, '../assigment/_extensions/assigment/_extension.yml');
+// Update <template>/_extensions/<template>/_extension.yml
+const extensionYmlPath = join(__dirname, `../${template}/_extensions/${template}/_extension.yml`);
 try {
   let content = readFileSync(extensionYmlPath, 'utf8');
   
@@ -28,4 +32,4 @@ try {
   process.exit(1);
 }
 
-console.log(`✨ Version sync completed successfully!`);
+console.log(`✨ Version sync completed successfully for ${template}!`);

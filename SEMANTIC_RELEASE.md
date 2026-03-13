@@ -1,10 +1,19 @@
 # Semantic Release Setup Guide
 
-This document explains the semantic release configuration for this project.
+This document explains the semantic release configuration for this monorepo with multiple Quarto templates.
 
 ## Overview
 
-This project uses **semantic-release** to automatically version the `assigment` template based on commit messages. Versions are only bumped when changes are made to files in the `assigment/` folder AND use the correct commit scope.
+This project uses **semantic-release** to automatically version each template independently based on commit messages. Each template (like `assigment`, `exam`, etc.) has its own:
+
+- Version number in `<template>/_extensions/<template>/_extension.yml`
+- Changelog in `<template>/CHANGELOG.md`
+- Git tags with format `<template>-v1.0.0`
+- GitHub releases
+
+Versions are only bumped when:
+1. Changes are made to files in the template's folder
+2. Commits use the correct scope (e.g., `feat(assigment):`)
 
 ## Quick Start
 
@@ -12,20 +21,20 @@ This project uses **semantic-release** to automatically version the `assigment` 
 
 Ensure your repository has:
 - Permissions for GitHub Actions to create releases
-- `main` as the default branch (or update `.releaserc.yml` accordingly)
+- `main` as the default branch
 
 ### 2. Commit Convention
 
-All commits that should trigger a release must follow this format:
+All commits that should trigger a release must follow this format with the template name as scope:
 
 ```
-<type>(assigment): <description>
+<type>(<template-name>): <description>
 ```
 
 Examples:
-- `feat(assigment): add new rubric format` → Minor version bump (1.0.0 → 1.1.0)
-- `fix(assigment): correct footer spacing` → Patch version bump (1.0.0 → 1.0.1)
-- `feat(assigment)!: change YAML structure` → Major version bump (1.0.0 → 2.0.0)
+- `feat(assigment): add new rubric format` → Minor version bump for assigment
+- `fix(exam): correct footer spacing` → Patch version bump for exam
+- `feat(report)!: change YAML structure` → Major version bump for report
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for complete details.
 
@@ -34,76 +43,101 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for complete details.
 ### Workflow Trigger
 
 The semantic release workflow (`.github/workflows/semantic-release.yml`) runs when:
-1. Code is pushed to the `main` branch
-2. Files in `assigment/` folder are changed
-3. Or semantic release configuration files are modified
+1. Code is pushed to `main` or `alpha` branch
+2. The workflow detects which templates have changed
+3. Runs semantic-release for each changed template that has a release config
+
+### Change Detection
+
+The workflow automatically:
+1. Finds all available templates (folders with `_extensions` subfolder)
+2. Detects which files changed since the last commit
+3. Determines which templates were modified
+4. Runs semantic-release independently for each changed template
 
 ### Version Detection
 
-The `.releaserc.yml` configuration:
-- Analyzes commits with `scope: assigment`
+Each template has its own `.releaserc.<template>.yml` configuration that:
+- Analyzes commits with `scope: <template>`
 - Determines version bump based on commit type
-- Ignores commits with other scopes or no scope
+- Ignores commits with other scopes
+- Uses git tags with format `<template>-v1.0.0`
 
 ### Files Updated
 
-When a release is triggered:
-1. `assigment/_extensions/assigment/_extension.yml` - Version field updated
-2. `CHANGELOG.md` - Release notes added
-3. Git tag created (e.g., `v1.1.0`)
-4. GitHub release published
+When a release is triggered for a template:
+1. `<template>/_extensions/<template>/_extension.yml` - Version field updated
+2. `<template>/CHANGELOG.md` - Release notes added
+3. Git tag created (e.g., `assigment-v1.1.0`)
+4. GitHub release published with template name
 
 ### Version Sync Script
 
-The `scripts/sync-assigment-version.mjs` script:
-- Reads the new version from semantic-release
-- Updates the version in `_extension.yml`
+The `scripts/sync-template-version.mjs` script:
+- Takes template name and version as arguments
+- Updates the version in the template's `_extension.yml`
+- Works for any template in the repository
 
 You can test it locally:
 ```bash
-node scripts/sync-assigment-version.mjs 1.2.3
+node scripts/sync-template-version.mjs assigment 1.2.3
+node scripts/sync-template-version.mjs exam 2.0.0
 ```
 
 ## Configuration Files
 
 | File | Purpose |
 |------|---------|
-| `.releaserc.yml` | Semantic release configuration |
-| `.github/workflows/semantic-release.yml` | GitHub Actions workflow |
-| `scripts/sync-assigment-version.mjs` | Version synchronization script |
+| `.releaserc.<template>.yml` | Release config for each template |
+| `.releaserc.template.yml` | Template file for creating new configs |
+| `.github/workflows/semantic-release.yml` | GitHub Actions workflow with change detection |
+| `scripts/sync-template-version.mjs` | Generic version synchronization script |
 | `CONTRIBUTING.md` | Commit message guidelines |
-| `CHANGELOG.md` | Auto-generated release notes |
+| `<template>/CHANGELOG.md` | Auto-generated release notes per template |
 
 ## Adding More Templates
 
 To add semantic release for another template (e.g., `exam`):
 
-1. Update `.releaserc.yml` to include the new scope:
-   ```yaml
-   - type: feat
-     scope: exam
-     release: minor
+1. **Copy the template file**:
+   ```bash
+   cp .releaserc.template.yml .releaserc.exam.yml
    ```
 
-2. Create a new sync script or modify the existing one
+2. **Replace all `TEMPLATE_NAME` with `exam`** in the file
 
-3. Update the GitHub workflow paths:
-   ```yaml
-   paths:
-     - 'assigment/**'
-     - 'exam/**'
+3. **Create the template's changelog**:
+   ```bash
+   mkdir -p exam
+   echo "# Changelog - Exam Template" > exam/CHANGELOG.md
    ```
 
-4. Update `CONTRIBUTING.md` with the new scope
+4. **Update `CONTRIBUTING.md`** to list `exam` as a valid scope
+
+5. **Create the template structure** with `_extensions/exam/` folder
+
+6. **Make commits with the new scope**:
+   ```bash
+   git commit -m "feat(exam): initial template"
+   ```
+
+The workflow will automatically detect and release the new template!
 
 ## Testing Locally
 
-You can test the sync script locally:
+You can test the sync script locally for any template:
 
 ```bash
-node scripts/sync-assigment-version.mjs 1.2.3
-git diff  # Check what changed
-git checkout -- .  # Restore files
+# Test assigment template
+node scripts/sync-template-version.mjs assigment 1.2.3
+git diff assigment/_extensions/assigment/_extension.yml
+
+# Test another template
+node scripts/sync-template-version.mjs exam 2.0.0
+git diff exam/_extensions/exam/_extension.yml
+
+# Restore changes
+git checkout -- .
 ```
 
 ## Troubleshooting
@@ -111,17 +145,19 @@ git checkout -- .  # Restore files
 ### Release Not Triggering
 
 Check:
-- Commits use `assigment` scope: `feat(assigment): ...`
-- Changes are in `assigment/` folder
+- Commits use correct template scope: `feat(assigment): ...`, `fix(exam): ...`
+- Changes are in the template's folder (e.g., `assigment/`)
 - Pushing to `main` branch (not other branches)
 - GitHub Actions is enabled in repository settings
+- Release config exists: `.releaserc.<template>.yml`
 
 ### Version Not Updating
 
 Check:
-- `scripts/sync-assigment-version.mjs` exists and is readable
-- File paths in the script are correct
+- `scripts/sync-template-version.mjs` exists and is readable
+- Template structure: `<template>/_extensions/<template>/_extension.yml`
 - The `_extension.yml` file has format `version: X.X.X`
+- Correct arguments passed to script in `.releaserc.<template>.yml`
 
 ### Permission Errors
 

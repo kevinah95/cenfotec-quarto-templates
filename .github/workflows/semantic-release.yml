@@ -5,10 +5,6 @@ on:
     branches:
       - main
       - alpha
-    paths:
-      - 'assigment/**'
-      - '.releaserc.yml'
-      - 'scripts/sync-assigment-version.mjs'
 
 permissions:
   contents: write
@@ -16,9 +12,54 @@ permissions:
   pull-requests: write
 
 jobs:
-  semantic-release:
-    name: Semantic Release
+  detect-changes:
+    name: Detect Changed Templates
     runs-on: ubuntu-latest
+    outputs:
+      templates: ${{ steps.detect.outputs.templates }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect changed templates
+        id: detect
+        run: |
+          # Get list of available templates (directories with _extensions folder)
+          AVAILABLE_TEMPLATES=$(find . -maxdepth 2 -type d -name "_extensions" | cut -d'/' -f2 | sort -u | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          echo "Available templates: $AVAILABLE_TEMPLATES"
+
+          # Get changed files since last tag or from beginning if no tags
+          if git describe --tags --abbrev=0 2>/dev/null; then
+            LAST_TAG=$(git describe --tags --abbrev=0)
+            CHANGED_FILES=$(git diff --name-only $LAST_TAG HEAD)
+          else
+            CHANGED_FILES=$(git ls-files)
+          fi
+
+          echo "Changed files: $CHANGED_FILES"
+
+          # Find which templates have changes
+          CHANGED_TEMPLATES=$(echo "$CHANGED_FILES" | grep -E '^[^/]+/' | cut -d'/' -f1 | sort -u | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          echo "Changed templates: $CHANGED_TEMPLATES"
+
+          # Filter to only include templates that exist and have a release config
+          TEMPLATES_TO_RELEASE=$(jq -nc --argjson available "$AVAILABLE_TEMPLATES" --argjson changed "$CHANGED_TEMPLATES" \
+            '$available | map(select(. as $t | $changed | index($t) != null))')
+
+          echo "Templates to release: $TEMPLATES_TO_RELEASE"
+          echo "templates=$TEMPLATES_TO_RELEASE" >> $GITHUB_OUTPUT
+
+  semantic-release:
+    name: Release ${{ matrix.template }}
+    runs-on: ubuntu-latest
+    needs: detect-changes
+    if: needs.detect-changes.outputs.templates != '[]'
+    strategy:
+      matrix:
+        template: ${{ fromJson(needs.detect-changes.outputs.templates) }}
+      fail-fast: false
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -26,9 +67,21 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
-      - name: Semantic Release
+      - name: Check if release config exists
+        id: check-config
+        run: |
+          if [ -f ".releaserc.${{ matrix.template }}.yml" ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "⚠️ No release config found for ${{ matrix.template }}"
+          fi
+
+      - name: Semantic Release for ${{ matrix.template }}
+        if: steps.check-config.outputs.exists == 'true'
         uses: cycjimmy/semantic-release-action@v6
         with:
+          extends: ./.releaserc.${{ matrix.template }}.yml
           extra_plugins: |
             @semantic-release/changelog
             @semantic-release/exec

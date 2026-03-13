@@ -1,0 +1,69 @@
+# Template for future templates (e.g., exam, report, etc.)
+# Copy this file and replace 'TEMPLATE_NAME' with your template name
+
+branches:
+  - main
+  - name: alpha
+    prerelease: true
+
+tagFormat: "TEMPLATE_NAME-v${version}"
+
+plugins:
+  - - "@semantic-release/commit-analyzer"
+    - releaseRules:
+        # Only release when TEMPLATE_NAME scope is used
+        - type: feat
+          scope: TEMPLATE_NAME
+          release: minor
+        - type: fix
+          scope: TEMPLATE_NAME
+          release: patch
+        - type: perf
+          scope: TEMPLATE_NAME
+          release: patch
+        - breaking: true
+          scope: TEMPLATE_NAME
+          release: major
+        # Ignore changes to other scopes
+        - scope: "!TEMPLATE_NAME"
+          release: false
+      parserOpts:
+        noteKeywords:
+          - BREAKING CHANGE
+          - BREAKING CHANGES
+
+  - - "@semantic-release/release-notes-generator"
+    - preset: angular
+      writerOpts:
+        commitsSort:
+          - subject
+          - scope
+      presetConfig:
+        types:
+          - type: feat
+            section: Features
+          - type: fix
+            section: Bug Fixes
+          - type: perf
+            section: Performance Improvements
+          - type: docs
+            section: Documentation
+          - type: refactor
+            section: Code Refactoring
+
+  - - "@semantic-release/exec"
+    - prepareCmd: "node scripts/sync-template-version.mjs TEMPLATE_NAME ${nextRelease.version}"
+
+  - - "@semantic-release/changelog"
+    - changelogFile: "TEMPLATE_NAME/CHANGELOG.md"
+      changelogTitle: "# Changelog - TEMPLATE_NAME Template"
+
+  - - "@semantic-release/git"
+    - assets:
+        - "TEMPLATE_NAME/CHANGELOG.md"
+        - "TEMPLATE_NAME/_extensions/TEMPLATE_NAME/_extension.yml"
+      message: "chore(release): TEMPLATE_NAME v${nextRelease.version}\n\n${nextRelease.notes}"
+
+  - - "@semantic-release/github"
+    - successComment: false
+      releasedLabels: false

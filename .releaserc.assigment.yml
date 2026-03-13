@@ -3,11 +3,12 @@ branches:
   - name: alpha
     prerelease: true
 
-# Only trigger release if assigment folder files changed
+tagFormat: "assigment-v${version}"
+
 plugins:
   - - "@semantic-release/commit-analyzer"
     - releaseRules:
-        # Custom rules to only release when assigment folder is affected
+        # Only release when assigment scope is used
         - type: feat
           scope: assigment
           release: minor
@@ -30,6 +31,10 @@ plugins:
 
   - - "@semantic-release/release-notes-generator"
     - preset: angular
+      writerOpts:
+        commitsSort:
+          - subject
+          - scope
       presetConfig:
         types:
           - type: feat
@@ -44,7 +49,7 @@ plugins:
             section: Code Refactoring
 
   - - "@semantic-release/exec"
-    - prepareCmd: "node scripts/sync-assigment-version.mjs ${nextRelease.version}"
+    - prepareCmd: "node scripts/sync-template-version.mjs assigment ${nextRelease.version}"
 
   - - "@semantic-release/changelog"
     - changelogFile: "assigment/CHANGELOG.md"
@@ -56,4 +61,6 @@ plugins:
         - "assigment/_extensions/assigment/_extension.yml"
       message: "chore(release): assigment v${nextRelease.version}\n\n${nextRelease.notes}"
 
-  - "@semantic-release/github"
+  - - "@semantic-release/github"
+    - successComment: false
+      releasedLabels: false

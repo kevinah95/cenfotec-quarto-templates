@@ -1,6 +1,18 @@
 # Contributing to CENFOTEC Quarto Templates
 
-Thank you for your interest in contributing! This project uses semantic versioning with automated releases.
+Thank you for your interest in contributing! This project uses semantic versioning with automated releases for each template independently.
+
+## Monorepo Structure
+
+Each template in this repository is versioned independently:
+- `assigment/` - Assignment template
+- Future templates (e.g., `exam/`, `report/`, etc.)
+
+Each template has its own:
+- Version in `<template>/_extensions/<template>/_extension.yml`
+- Changelog in `<template>/CHANGELOG.md`
+- Git tags like `<template>-v1.0.0`
+- GitHub releases
 
 ## Commit Message Convention
 
@@ -21,7 +33,9 @@ This project uses [Conventional Commits](https://www.conventionalcommits.org/) w
 Each template has its own scope. **You must use the correct scope** for semantic release to work:
 
 - `assigment` - For changes to the assigment template
-- Future templates will have their own scopes
+- Add more scopes as new templates are added (e.g., `exam`, `report`)
+
+**Important:** Only commits with the template's scope will trigger a release for that template.
 
 ### Types
 
@@ -141,12 +155,39 @@ Changes to files outside the `assigment/` folder with `assigment` scope will sti
 
 ## Local Testing
 
-Test the version sync script locally:
+Test the version sync script locally for any template:
 ```bash
-node scripts/sync-assigment-version.mjs 1.2.3
+node scripts/sync-template-version.mjs assigment 1.2.3
 git diff  # Check what changed
 git checkout -- .  # Restore files
 ```
+
+## Adding a New Template
+
+To add semantic release for a new template (e.g., `exam`):
+
+1. **Copy the template release config**:
+   ```bash
+   cp .releaserc.template.yml .releaserc.exam.yml
+   ```
+
+2. **Replace all `TEMPLATE_NAME` with `exam`** in the new config file
+
+3. **Create the template's CHANGELOG**:
+   ```bash
+   mkdir -p exam
+   echo "# Changelog - Exam Template" > exam/CHANGELOG.md
+   ```
+
+4. **Update `CONTRIBUTING.md`** to add `exam` to the list of scopes
+
+5. **Commit with the new scope**:
+   ```bash
+   git add .
+   git commit -m "chore(exam): add semantic release configuration"
+   ```
+
+The workflow will automatically detect the new template and handle releases!
 
 ## Questions?
 
