@@ -1,0 +1,59 @@
+branches:
+  - main
+  - name: alpha
+    prerelease: true
+
+# Only trigger release if assigment folder files changed
+plugins:
+  - - "@semantic-release/commit-analyzer"
+    - releaseRules:
+        # Custom rules to only release when assigment folder is affected
+        - type: feat
+          scope: assigment
+          release: minor
+        - type: fix
+          scope: assigment
+          release: patch
+        - type: perf
+          scope: assigment
+          release: patch
+        - breaking: true
+          scope: assigment
+          release: major
+        # Ignore changes to other scopes
+        - scope: "!assigment"
+          release: false
+      parserOpts:
+        noteKeywords:
+          - BREAKING CHANGE
+          - BREAKING CHANGES
+
+  - - "@semantic-release/release-notes-generator"
+    - preset: conventionalcommits
+      presetConfig:
+        types:
+          - type: feat
+            section: Features
+          - type: fix
+            section: Bug Fixes
+          - type: perf
+            section: Performance Improvements
+          - type: docs
+            section: Documentation
+          - type: refactor
+            section: Code Refactoring
+
+  - - "@semantic-release/exec"
+    - prepareCmd: "node scripts/sync-assigment-version.mjs ${nextRelease.version}"
+
+  - - "@semantic-release/changelog"
+    - changelogFile: "assigment/CHANGELOG.md"
+      changelogTitle: "# Changelog - Assigment Template"
+
+  - - "@semantic-release/git"
+    - assets:
+        - "assigment/CHANGELOG.md"
+        - "assigment/_extensions/assigment/_extension.yml"
+      message: "chore(release): assigment v${nextRelease.version}\n\n${nextRelease.notes}"
+
+  - "@semantic-release/github"
