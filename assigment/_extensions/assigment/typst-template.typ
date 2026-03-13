@@ -150,6 +150,8 @@
   set text(font: "Arial")
   set heading(numbering: "1.a.")
   show heading: set text(fill: rgb("#164A98"))
+  show link: underline
+  show link: set text(fill: rgb("#0000EE"))
   set enum(indent: .5cm)
   set par(
     spacing: 1.15em,
