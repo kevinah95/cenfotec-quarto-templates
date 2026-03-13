@@ -1,6 +1,6 @@
 title: Assigment
 author: M.Sc. Kevin A. Hernández Rostrán
-version: 1.0.0-alpha.1-alpha.1
+version: 1.0.0
 quarto-required: ">=1.8.12"
 contributes:
   formats:
