@@ -12,5 +12,6 @@ contributes:
         - header.png
         - footer.png
         - logo.png
+        - .gitignore
       exclude:
         - docs/**
