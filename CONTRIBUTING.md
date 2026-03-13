@@ -166,25 +166,32 @@ git checkout -- .  # Restore files
 
 To add semantic release for a new template (e.g., `exam`):
 
-1. **Copy the template release config**:
+1. **Create the template structure**:
    ```bash
-   cp .releaserc.template.yml .releaserc.exam.yml
+   mkdir -p exam/_extensions/exam
    ```
 
-2. **Replace all `TEMPLATE_NAME` with `exam`** in the new config file
-
-3. **Create the template's CHANGELOG**:
+2. **Copy the template release config**:
    ```bash
-   mkdir -p exam
+   cp .releaserc.template.yml exam/.releaserc.yml
+   ```
+
+3. **Replace all `TEMPLATE_NAME` with `exam`** in `exam/.releaserc.yml`:
+   ```bash
+   sed -i '' 's/TEMPLATE_NAME/exam/g' exam/.releaserc.yml
+   ```
+
+4. **Create the template's CHANGELOG**:
+   ```bash
    echo "# Changelog - Exam Template" > exam/CHANGELOG.md
    ```
 
-4. **Update `CONTRIBUTING.md`** to add `exam` to the list of scopes
+5. **Update `CONTRIBUTING.md`** to add `exam` to the list of scopes
 
-5. **Commit with the new scope**:
+6. **Commit with the new scope**:
    ```bash
    git add .
-   git commit -m "chore(exam): add semantic release configuration"
+   git commit -m "feat(exam): initial template"
    ```
 
 The workflow will automatically detect the new template and handle releases!

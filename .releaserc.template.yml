@@ -1,5 +1,6 @@
 # Template for future templates (e.g., exam, report, etc.)
-# Copy this file and replace 'TEMPLATE_NAME' with your template name
+# Copy this file to <template>/.releaserc.yml
+# Replace 'TEMPLATE_NAME' with your template name
 
 branches:
   - main
@@ -52,16 +53,16 @@ plugins:
             section: Code Refactoring
 
   - - "@semantic-release/exec"
-    - prepareCmd: "node scripts/sync-template-version.mjs TEMPLATE_NAME ${nextRelease.version}"
+    - prepareCmd: "node ../scripts/sync-template-version.mjs TEMPLATE_NAME ${nextRelease.version}"
 
   - - "@semantic-release/changelog"
-    - changelogFile: "TEMPLATE_NAME/CHANGELOG.md"
+    - changelogFile: "CHANGELOG.md"
       changelogTitle: "# Changelog - TEMPLATE_NAME Template"
 
   - - "@semantic-release/git"
     - assets:
-        - "TEMPLATE_NAME/CHANGELOG.md"
-        - "TEMPLATE_NAME/_extensions/TEMPLATE_NAME/_extension.yml"
+        - "CHANGELOG.md"
+        - "_extensions/TEMPLATE_NAME/_extension.yml"
       message: "chore(release): TEMPLATE_NAME v${nextRelease.version}\n\n${nextRelease.notes}"
 
   - - "@semantic-release/github"

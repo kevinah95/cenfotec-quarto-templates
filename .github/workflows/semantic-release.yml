@@ -70,7 +70,7 @@ jobs:
       - name: Check if release config exists
         id: check-config
         run: |
-          if [ -f ".releaserc.${{ matrix.template }}.yml" ]; then
+          if [ -f "${{ matrix.template }}/.releaserc.yml" ]; then
             echo "exists=true" >> $GITHUB_OUTPUT
           else
             echo "exists=false" >> $GITHUB_OUTPUT
@@ -81,7 +81,7 @@ jobs:
         if: steps.check-config.outputs.exists == 'true'
         uses: cycjimmy/semantic-release-action@v6
         with:
-          extends: ./.releaserc.${{ matrix.template }}.yml
+          working_directory: ./${{ matrix.template }}
           extra_plugins: |
             @semantic-release/changelog
             @semantic-release/exec

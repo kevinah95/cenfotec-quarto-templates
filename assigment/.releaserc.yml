@@ -49,16 +49,16 @@ plugins:
             section: Code Refactoring
 
   - - "@semantic-release/exec"
-    - prepareCmd: "node scripts/sync-template-version.mjs assigment ${nextRelease.version}"
+    - prepareCmd: "node ../scripts/sync-template-version.mjs assigment ${nextRelease.version}"
 
   - - "@semantic-release/changelog"
-    - changelogFile: "assigment/CHANGELOG.md"
+    - changelogFile: "CHANGELOG.md"
       changelogTitle: "# Changelog - Assigment Template"
 
   - - "@semantic-release/git"
     - assets:
-        - "assigment/CHANGELOG.md"
-        - "assigment/_extensions/assigment/_extension.yml"
+        - "CHANGELOG.md"
+        - "_extensions/assigment/_extension.yml"
       message: "chore(release): assigment v${nextRelease.version}\n\n${nextRelease.notes}"
 
   - - "@semantic-release/github"

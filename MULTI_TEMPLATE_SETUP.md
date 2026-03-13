@@ -15,7 +15,7 @@ Each template is now independently versioned:
 
 | File | Purpose |
 |------|---------|
-| `.releaserc.assigment.yml` | Release config for assigment template |
+| `assigment/.releaserc.yml` | Release config for assigment template |
 | `.releaserc.template.yml` | Template file to copy for new templates |
 | `.github/workflows/semantic-release.yml` | Detects changes and releases each template |
 | `scripts/sync-template-version.mjs` | Generic script that works for any template |
@@ -33,14 +33,14 @@ Each template is now independently versioned:
 To add a new template (e.g., `exam`):
 
 ```bash
-# 1. Copy the template config
-cp .releaserc.template.yml .releaserc.exam.yml
+# 1. Create the template structure
+mkdir -p exam/_extensions/exam
 
-# 2. Replace TEMPLATE_NAME with exam in the new file
-sed -i '' 's/TEMPLATE_NAME/exam/g' .releaserc.exam.yml
+# 2. Copy and customize the release config
+cp .releaserc.template.yml exam/.releaserc.yml
+sed -i '' 's/TEMPLATE_NAME/exam/g' exam/.releaserc.yml
 
 # 3. Create changelog
-mkdir -p exam
 echo "# Changelog - Exam Template" > exam/CHANGELOG.md
 
 # 4. Create your template structure

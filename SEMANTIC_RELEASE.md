@@ -88,7 +88,7 @@ node scripts/sync-template-version.mjs exam 2.0.0
 
 | File | Purpose |
 |------|---------|
-| `.releaserc.<template>.yml` | Release config for each template |
+| `<template>/.releaserc.yml` | Release config inside each template folder |
 | `.releaserc.template.yml` | Template file for creating new configs |
 | `.github/workflows/semantic-release.yml` | GitHub Actions workflow with change detection |
 | `scripts/sync-template-version.mjs` | Generic version synchronization script |
@@ -99,22 +99,27 @@ node scripts/sync-template-version.mjs exam 2.0.0
 
 To add semantic release for another template (e.g., `exam`):
 
-1. **Copy the template file**:
+1. **Create the template structure**:
    ```bash
-   cp .releaserc.template.yml .releaserc.exam.yml
+   mkdir -p exam/_extensions/exam
    ```
 
-2. **Replace all `TEMPLATE_NAME` with `exam`** in the file
-
-3. **Create the template's changelog**:
+2. **Copy the template config**:
    ```bash
-   mkdir -p exam
+   cp .releaserc.template.yml exam/.releaserc.yml
+   ```
+
+3. **Replace all `TEMPLATE_NAME` with `exam`** in `exam/.releaserc.yml`:
+   ```bash
+   sed -i '' 's/TEMPLATE_NAME/exam/g' exam/.releaserc.yml
+   ```
+
+4. **Create the template's changelog**:
+   ```bash
    echo "# Changelog - Exam Template" > exam/CHANGELOG.md
    ```
 
-4. **Update `CONTRIBUTING.md`** to list `exam` as a valid scope
-
-5. **Create the template structure** with `_extensions/exam/` folder
+5. **Update `CONTRIBUTING.md`** to list `exam` as a valid scope
 
 6. **Make commits with the new scope**:
    ```bash
@@ -149,7 +154,7 @@ Check:
 - Changes are in the template's folder (e.g., `assigment/`)
 - Pushing to `main` branch (not other branches)
 - GitHub Actions is enabled in repository settings
-- Release config exists: `.releaserc.<template>.yml`
+- Release config exists: `<template>/.releaserc.yml`
 
 ### Version Not Updating
 
@@ -157,7 +162,8 @@ Check:
 - `scripts/sync-template-version.mjs` exists and is readable
 - Template structure: `<template>/_extensions/<template>/_extension.yml`
 - The `_extension.yml` file has format `version: X.X.X`
-- Correct arguments passed to script in `.releaserc.<template>.yml`
+- Correct arguments passed to script in `<template>/.releaserc.yml`
+- Script path is relative: `../scripts/sync-template-version.mjs`
 
 ### Permission Errors
 
