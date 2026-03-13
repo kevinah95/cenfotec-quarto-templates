@@ -9,3 +9,6 @@
 
 /assigment/.quarto
 /assigment/*.png
+
+# Don't ignore .gitignore files in _extensions (they are format resources)
+!**/_extensions/**/.gitignore
