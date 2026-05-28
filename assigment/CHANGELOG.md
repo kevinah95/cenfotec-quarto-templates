@@ -118,6 +118,13 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.1.1](https://github.com/kevinah95/cenfotec-quarto-templates/compare/assigment-v1.1.0...assigment-v1.1.1) (2026-05-28)
+
+
+### Bug Fixes
+
+* correct extra-files path and sync _extension.yml to 1.1.0 ([d762267](https://github.com/kevinah95/cenfotec-quarto-templates/commit/d762267c3a3b230a6f288050480f19ce370f301a))
+
 ## [1.1.0](https://github.com/kevinah95/cenfotec-quarto-templates/compare/assigment-v1.0.0...assigment-v1.1.0) (2026-05-28)
 
 
