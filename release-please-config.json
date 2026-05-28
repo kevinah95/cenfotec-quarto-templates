@@ -8,7 +8,7 @@
       "extra-files": [
         {
           "type": "yaml",
-          "path": "assigment/_extensions/assigment/_extension.yml",
+          "path": "_extensions/assigment/_extension.yml",
           "jsonpath": "$.version"
         }
       ]
