@@ -12,3 +12,7 @@ contributes:
       title-slide-attributes:
         data-background-image: background.jpg
         data-background-size: 100% 100%;
+      format-resources:
+        - background_body.jpg
+        - background.jpg
+        - logo.svg
