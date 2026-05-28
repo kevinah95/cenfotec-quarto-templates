@@ -1,0 +1,14 @@
+title: Slides Basic Theme
+author: Kevin A. Hernández Rostrán
+version: 1.0.0
+quarto-required: '>=1.6.0'
+contributes:
+  formats:
+    revealjs:
+      theme:
+        - dark
+        - cenfotec.scss
+      logo: logo.svg
+      title-slide-attributes:
+        data-background-image: background.jpg
+        data-background-size: 100% 100%;

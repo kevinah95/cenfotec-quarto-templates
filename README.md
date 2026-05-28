@@ -23,6 +23,24 @@ quarto use template kevinah95/cenfotec-quarto-templates/assigment
 
 ---
 
+### 🎨 Slides Basic Theme ([slides-basic](slides-basic/))
+
+Tema base de presentaciones RevealJS con identidad visual de Universidad CENFOTEC.
+
+**Instalación:**
+```bash
+quarto use template kevinah95/cenfotec-quarto-templates/slides-basic
+```
+
+**Características:**
+- Tema oscuro con branding institucional CENFOTEC
+- Logo, fondo y estilos SCSS personalizados
+- Compatible con RevealJS
+
+**[Ver documentación completa →](slides-basic/README.md)**
+
+---
+
 ## 🚀 Inicio Rápido
 
 1. **Instala Quarto** (si aún no lo tienes):
