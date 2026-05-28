@@ -108,3 +108,19 @@ El documento generado incluye:
 
 ![Página 03](../docs/assigment/img/p03.png)
 *Página 3: Rúbrica de evaluación*
+
+## Usage
+
+Install the extension:
+
+```bash
+quarto add kevinah95/cenfotec-quarto-templates/assigment
+```
+
+Use it in your document:
+
+```yaml
+---
+format: assigment-typst
+---
+```
