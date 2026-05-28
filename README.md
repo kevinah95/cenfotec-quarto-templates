@@ -55,15 +55,6 @@ feat(assigment): descripción del cambio
 📚 **Lee la guía completa:**
 - [CONTRIBUTING.md](CONTRIBUTING.md) - Convenciones de commits
 
-## 🔖 Versionado
-
-Cada plantilla se versiona independientemente usando [Release Please](https://github.com/googleapis/release-please):
-- **MAJOR** (X.0.0) - Cambios incompatibles (breaking changes)
-- **MINOR** (0.X.0) - Nuevas funcionalidades compatibles
-- **PATCH** (0.0.X) - Correcciones de bugs
-
-Las versiones se actualizan automáticamente a través de PRs generados por Release Please al hacer push a `main` con commits que siguen [Conventional Commits](https://www.conventionalcommits.org/).
-
 ## 📄 Licencia
 
 Este proyecto es mantenido para uso de la comunidad de Universidad CENFOTEC.
