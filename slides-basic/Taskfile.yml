@@ -1,0 +1,13 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  debug:
+    cmds:
+      - quarto preview template.qmd --trace
+  clean:
+    cmds:
+      - rm -rf .quarto
+      - rm -rf template.html
+      - rm -rf template_files
