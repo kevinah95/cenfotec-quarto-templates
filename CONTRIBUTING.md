@@ -1,10 +1,10 @@
 # Contributing to CENFOTEC Quarto Templates
 
-Thank you for your interest in contributing! This project uses semantic versioning with automated releases for each template independently.
+Thank you for your interest in contributing! This project uses [Release Please](https://github.com/googleapis/release-please) for automated versioning based on [Conventional Commits](https://www.conventionalcommits.org/).
 
 ## Monorepo Structure
 
-Each template in this repository is versioned independently:
+Each template is versioned independently:
 - `assigment/` - Assignment template
 - Future templates (e.g., `exam/`, `report/`, etc.)
 
@@ -12,120 +12,7 @@ Each template has its own:
 - Version in `<template>/_extensions/<template>/_extension.yml`
 - Changelog in `<template>/CHANGELOG.md`
 - Git tags like `<template>-v1.0.0`
-- GitHub releases
-
-## Commit Message Convention
-
-This project uses [Conventional Commits](https://www.conventionalcommits.org/) with a **required scope** to identify which template is being modified.
-
-### Format
-
-```
-<type>(<scope>): <description>
-
-[optional body]
-
-[optional footer(s)]
-```
-
-### Scopes
-
-Each template has its own scope. **You must use the correct scope** for semantic release to work:
-
-- `assigment` - For changes to the assigment template
-- Add more scopes as new templates are added (e.g., `exam`, `report`)
-
-**Important:** Only commits with the template's scope will trigger a release for that template.
-
-### Types
-
-- `feat` - A new feature (triggers MINOR version bump)
-- `fix` - A bug fix (triggers PATCH version bump)
-- `perf` - Performance improvement (triggers PATCH version bump)
-- `docs` - Documentation only changes (no version bump)
-- `refactor` - Code refactoring (no version bump)
-- `style` - Formatting changes (no version bump)
-- `test` - Adding tests (no version bump)
-- `chore` - Maintenance tasks (no version bump)
-
-### Breaking Changes
-
-To trigger a MAJOR version bump, add `BREAKING CHANGE:` in the commit footer:
-
-```
-feat(assigment)!: redesign template structure
-
-BREAKING CHANGE: The YAML structure has changed. Users need to update their documents.
-```
-
-Or use the `!` suffix after the scope:
-```
-feat(assigment)!: redesign template structure
-```
-
-### Examples
-
-#### New Feature (Minor Version Bump)
-```
-feat(assigment): add support for group activities
-
-Added new YAML options for group-based assignments.
-```
-
-#### Bug Fix (Patch Version Bump)
-```
-fix(assigment): correct header alignment issue
-
-Fixed the header that was misaligned on odd pages.
-```
-
-#### Breaking Change (Major Version Bump)
-```
-feat(assigment)!: restructure YAML configuration
-
-BREAKING CHANGE: The course-info section is now nested under metadata.
-Users must update their YAML frontmatter.
-```
-
-#### Documentation (No Version Bump)
-```
-docs(assigment): update README with examples
-```
-
-## How Semantic Release Works
-
-1. **Push to `main` branch**: Only pushes to main will trigger a release
-2. **Commits analyzed**: Semantic release reads commit messages since the last release
-3. **Version determined**: Based on commit types:
-   - `feat` → MINOR version bump (1.0.0 → 1.1.0)
-   - `fix` / `perf` → PATCH version bump (1.0.0 → 1.0.1)
-   - `BREAKING CHANGE` → MAJOR version bump (1.0.0 → 2.0.0)
-4. **Files updated**:
-   - `CHANGELOG.md` - Generated with release notes
-   - `assigment/_extensions/assigment/_extension.yml` - Version updated
-   - `package.json` - Version updated
-5. **Release created**: Git tag and GitHub release are created
-6. **Commit pushed**: Changes are committed back to the repository
-
-## Important Notes
-
-### Scope is Required!
-
-❌ **Wrong** - Will NOT trigger a release:
-```
-feat: add new feature
-fix: correct bug
-```
-
-✅ **Correct** - Will trigger a release:
-```
-feat(assigment): add new feature
-fix(assigment): correct bug
-```
-
-### Only Assigment Changes Trigger Releases
-
-Changes to files outside the `assigment/` folder with `assigment` scope will still trigger releases. Be precise with your commits.
+- GitHub release
 
 ## Development Workflow
 
@@ -134,71 +21,58 @@ Changes to files outside the `assigment/` folder with `assigment` scope will sti
    git checkout -b feature/my-feature
    ```
 
-2. Make your changes to the assigment template
+2. Make your changes inside the template folder (e.g., `assigment/`)
 
-3. Commit with proper convention:
+3. Commit using [Conventional Commits](https://www.conventionalcommits.org/):
    ```bash
-   git commit -m "feat(assigment): add new feature"
+   git commit -m "feat(assigment): add support for group activities"
    ```
 
-4. Push and create a Pull Request:
-   ```bash
-   git push origin feature/my-feature
-   ```
+4. Open a Pull Request to `main`
 
-5. Once merged to `main`, semantic release will automatically:
-   - Determine the version bump
-   - Update version files
-   - Generate changelog
-   - Create a GitHub release
-   - Push the changes back
+5. Once merged, Release Please automatically opens a release PR with:
+   - Version bump based on commit types
+   - Updated `CHANGELOG.md`
+   - Updated `_extension.yml` version
 
-## Local Testing
+6. Merge the release PR → tag and GitHub release are created
 
-Test the version sync script locally for any template:
-```bash
-node scripts/sync-template-version.mjs assigment 1.2.3
-git diff  # Check what changed
-git checkout -- .  # Restore files
-```
+## Commit Types
+
+| Type | Description | Version bump |
+|------|-------------|--------------|
+| `feat` | New feature | Minor (1.0.0 → 1.1.0) |
+| `fix` | Bug fix | Patch (1.0.0 → 1.0.1) |
+| `feat!` or `BREAKING CHANGE` | Breaking change | Major (1.0.0 → 2.0.0) |
+| `docs`, `chore`, `refactor` | No release | None |
+
+> **Note:** Release Please determines which template to version based on **which files you changed**, not the commit scope. The scope is optional but recommended for a cleaner CHANGELOG.
 
 ## Adding a New Template
 
-To add semantic release for a new template (e.g., `exam`):
-
-1. **Create the template structure**:
-   ```bash
-   mkdir -p exam/_extensions/exam
+1. Create the template structure under a new folder (e.g., `exam/`)
+2. Add the package to `release-please-config.json`:
+   ```json
+   "exam": {
+     "component": "exam",
+     "release-type": "simple",
+     "changelog-path": "CHANGELOG.md",
+     "extra-files": [
+       {
+         "type": "yaml",
+         "path": "_extensions/exam/_extension.yml",
+         "jsonpath": "$.version"
+       }
+     ]
+   }
    ```
-
-2. **Copy the template release config**:
-   ```bash
-   cp .releaserc.template.yml exam/.releaserc.yml
+3. Add the initial version to `.release-please-manifest.json`:
+   ```json
+   "exam": "1.0.0"
    ```
-
-3. **Replace all `TEMPLATE_NAME` with `exam`** in `exam/.releaserc.yml`:
-   ```bash
-   sed -i '' 's/TEMPLATE_NAME/exam/g' exam/.releaserc.yml
-   ```
-
-4. **Create the template's CHANGELOG**:
-   ```bash
-   echo "# Changelog - Exam Template" > exam/CHANGELOG.md
-   ```
-
-5. **Update `CONTRIBUTING.md`** to add `exam` to the list of scopes
-
-6. **Commit with the new scope**:
-   ```bash
-   git add .
-   git commit -m "feat(exam): initial template"
-   ```
-
-The workflow will automatically detect the new template and handle releases!
+4. Commit and push — Release Please will handle the rest
 
 ## Questions?
 
-If you're unsure about how to format your commit message, check:
-- [Conventional Commits](https://www.conventionalcommits.org/)
-- Recent commits in the repository
-- The [CHANGELOG.md](CHANGELOG.md) for examples
+Check [Conventional Commits](https://www.conventionalcommits.org/) or look at recent commits in the repository for examples.
+
