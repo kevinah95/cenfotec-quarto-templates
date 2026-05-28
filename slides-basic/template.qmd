@@ -1,7 +1,7 @@
 ---
 title: Título principal.
 format:
-  cenfotec-revealjs: default
+  slides-basic-revealjs: default
 author: Kevin A. Hernández Rostrán
 date: last-modified
 ---
