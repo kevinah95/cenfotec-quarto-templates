@@ -1,22 +1,33 @@
-# Cenfotec Extension For Quarto
+# Slides Basic Theme - Universidad CENFOTEC
 
-_TODO_: Add a short description of your extension.
+Tema base de presentaciones RevealJS con identidad visual de la Universidad CENFOTEC. Incluye logo institucional, fondos personalizados y estilos SCSS.
 
-## Installing
+## Instalación
 
 ```bash
-quarto add kevinah95/cenfotec
+quarto use template kevinah95/cenfotec-quarto-templates/slides-basic
 ```
 
-This will install the extension under the `_extensions` subdirectory.
-If you're using version control, you will want to check in this directory.
+Esto instalará la extensión bajo el subdirectorio `_extensions`. Si usas control de versiones, asegúrate de incluir este directorio.
 
-## Using
+## Uso
 
-_TODO_: Describe how to use your extension.
+Agrega el formato en el encabezado YAML de tu documento:
 
-## Example
+```yaml
+---
+title: "Mi Presentación"
+format: slides-basic-revealjs
+---
+```
 
-Here is the source code for a minimal example: [example.qmd](example.qmd).
+## Ejemplo
 
-This repository is using release-please.
+El archivo [template.qmd](template.qmd) contiene un ejemplo mínimo de uso.
+
+## Características
+
+- Tema oscuro con colores institucionales de CENFOTEC
+- Logo institucional incluido
+- Fondos personalizados para diapositivas de título y contenido
+- Estilos SCSS adaptados para presentaciones académicas
