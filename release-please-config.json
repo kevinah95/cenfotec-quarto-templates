@@ -12,7 +12,7 @@
           "jsonpath": "$.version"
         }
       ]
-    }
+    },
     "slides-basic": {
       "component": "slides-basic",
       "release-type": "simple",
