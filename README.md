@@ -54,16 +54,15 @@ feat(assigment): descripción del cambio
 
 📚 **Lee la guía completa:**
 - [CONTRIBUTING.md](CONTRIBUTING.md) - Convenciones de commits
-- [SEMANTIC_RELEASE.md](SEMANTIC_RELEASE.md) - Cómo funciona el versionado automático
 
 ## 🔖 Versionado
 
-Cada plantilla se versiona independientemente usando [Semantic Release](https://semantic-release.gitbook.io/):
+Cada plantilla se versiona independientemente usando [Release Please](https://github.com/googleapis/release-please):
 - **MAJOR** (X.0.0) - Cambios incompatibles (breaking changes)
 - **MINOR** (0.X.0) - Nuevas funcionalidades compatibles
 - **PATCH** (0.0.X) - Correcciones de bugs
 
-Las versiones se actualizan automáticamente al hacer push a `main` con commits que siguen [Conventional Commits](https://www.conventionalcommits.org/).
+Las versiones se actualizan automáticamente a través de PRs generados por Release Please al hacer push a `main` con commits que siguen [Conventional Commits](https://www.conventionalcommits.org/).
 
 ## 📄 Licencia
 
