@@ -18,10 +18,10 @@ individual: true
 group: false
 
 # 2. Instrucciones generales
-general-instructions:
-  - "Lea cuidadosamente las instrucciones de la actividad, en caso de tener alguna duda puede consultar con el docente."
-  - "Esta actividad se desarrolla de manera individual o grupal (de acuerdo con lo especificado en los datos generales), cualquier intento de plagio será sancionado de acuerdo con el reglamento académico vigente."
-  - "Al completar la actividad, debe subir la solución en la plataforma Moodle en el formato, tiempo y espacio indicado por el docente."
+general-instructions: |
+  1. Lea cuidadosamente las instrucciones de la actividad, en caso de tener alguna duda puede consultar con el docente.
+  2. Esta actividad se desarrolla de manera individual o grupal (de acuerdo con lo especificado en los datos generales), cualquier intento de plagio será sancionado de acuerdo con el reglamento académico vigente.
+  3. Al completar la actividad, debe subir la solución en la plataforma Moodle en el formato, tiempo y espacio indicado por el docente.
 
 # 3. Objetivos
 general-objective: "Analizar la evolución y los principales componentes de las tecnologías de información y comunicación, reconociendo los elementos tecnológicos y sus elementos asociados, tanto físicos como lógicos, de Hardware y de Software para valorar la función de estas tecnologías puestas al servicio del ser humano."
@@ -32,11 +32,15 @@ specific-objectives: | # Mantener este pipe para que la lista se mantenga en la 
 
 # 4. Descripción de la actividad
 activity-context: "Coloque aquí una descripción sobre la actividad que deben realizar los estudiantes."
-activity-instructions:
-  - "Elabore un diagrama general del programa que desarrollará, además las tablas de datos de entrada, salida, intermedios y constantes."
-  - "Elabore paso a paso el diagrama explicativo, debe contener todo lo abarcado en el curso."
-  - "Realice el diagrama de flujo de la solución del problema, tome en consideración que debe utilizar los elementos correctos según la función que vaya a desempeñar."
-  - "Utilice el programa [Diagrams.net](https://app.diagrams.net/) para la elaboración del diagrama de flujo."
+activity-instructions: |
+  1. Elabore un diagrama general del programa que desarrollará, además las tablas de datos de entrada, salida, intermedios y constantes.
+     - El diagrama debe incluir todas las transiciones de estado principales.
+     - Identifique claramente los tipos de datos de cada variable.
+  2. Elabore paso a paso el diagrama explicativo, debe contener todo lo abarcado en el curso.
+  3. Realice el diagrama de flujo de la solución del problema, tome en consideración que debe utilizar los elementos correctos según la función que vaya a desempeñar.
+     a. Use rectángulos para procesos generales.
+     b. Use rombos para decisiones lógicas.
+  4. Utilice el programa [Diagrams.net](https://app.diagrams.net/) para la elaboración del diagrama de flujo.
 
 # 5. Rúbrica
 rubric-criteria:
