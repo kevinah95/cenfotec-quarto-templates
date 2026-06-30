@@ -118,6 +118,13 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.1.2](https://github.com/kevinah95/cenfotec-quarto-templates/compare/assigment-v1.1.1...assigment-v1.1.2) (2026-06-30)
+
+
+### Bug Fixes
+
+* **assigment:** align list styles and fix multi-line parsing in template ([19d1180](https://github.com/kevinah95/cenfotec-quarto-templates/commit/19d1180c0031a9c04b6e3b85cc0219c6bb447966))
+
 ## [1.1.1](https://github.com/kevinah95/cenfotec-quarto-templates/compare/assigment-v1.1.0...assigment-v1.1.1) (2026-05-28)
 
 
