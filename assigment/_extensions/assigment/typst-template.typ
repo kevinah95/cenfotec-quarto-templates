@@ -153,6 +153,7 @@
   show link: underline
   show link: set text(fill: rgb("#0000EE"))
   set enum(indent: .5cm)
+  set list(indent: .5cm)
   set par(
     spacing: 1.15em,
   )

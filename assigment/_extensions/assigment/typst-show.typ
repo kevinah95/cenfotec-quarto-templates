@@ -54,25 +54,27 @@ $if(show-instructions-note)$
 $endif$
 $if(general-instructions)$
   general-instructions: [
-$for(general-instructions)$
-    + $general-instructions$
-$endfor$
+$general-instructions$
   ],
 $endif$
 $if(general-objective)$
-  general-objective: [$general-objective$],
+  general-objective: [
+$general-objective$
+  ],
 $endif$
 $if(specific-objectives)$
-  specific-objectives: [$specific-objectives$],
+  specific-objectives: [
+$specific-objectives$
+  ],
 $endif$
 $if(activity-context)$
-  activity-context: [$activity-context$],
+  activity-context: [
+$activity-context$
+  ],
 $endif$
 $if(activity-instructions)$
   activity-instructions: [
-$for(activity-instructions)$
-    + $activity-instructions$
-$endfor$
+$activity-instructions$
   ],
 $endif$
 $if(rubric-criteria)$

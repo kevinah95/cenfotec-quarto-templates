@@ -42,10 +42,10 @@ individual: true
 group: false
 
 # Instrucciones generales (opcional)
-general-instructions:
-  - "Lea cuidadosamente las instrucciones de la actividad."
-  - "Cualquier intento de plagio será sancionado."
-  - "Suba la solución en Moodle en el formato indicado."
+general-instructions: |
+  1. Lea cuidadosamente las instrucciones de la actividad.
+  2. Cualquier intento de plagio será sancionado.
+  3. Suba la solución en Moodle en el formato indicado.
 
 # Objetivos
 general-objective: "Objetivo general del curso..."
@@ -55,9 +55,12 @@ specific-objectives: |
 
 # Descripción de la actividad
 activity-context: "Descripción del contexto de la actividad..."
-activity-instructions:
-  - "Primera instrucción"
-  - "Segunda instrucción"
+activity-instructions: |
+  1. Primera instrucción principal
+     - Subinstrucción con viñeta (bullet point)
+  2. Segunda instrucción principal
+     a. Subinstrucción numerada
+  3. Tercera instrucción simple sin subinstrucciones
 
 # Rúbrica
 rubric-criteria:
