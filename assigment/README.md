@@ -1,4 +1,4 @@
-# Plantilla de Consignas - Universidad CENFOTEC
+# Plantilla de Asignaciones - Universidad CENFOTEC
 
 Plantilla Quarto para crear consignas de actividades académicas con formato profesional en PDF.
 
