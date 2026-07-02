@@ -5,6 +5,7 @@
       "component": "assigment",
       "release-type": "simple",
       "changelog-path": "CHANGELOG.md",
+      "versioning": "prerelease",
       "prerelease": true,
       "prerelease-type": "alpha",
       "extra-files": [
@@ -19,6 +20,7 @@
       "component": "slides-basic",
       "release-type": "simple",
       "changelog-path": "CHANGELOG.md",
+      "versioning": "prerelease",
       "prerelease": true,
       "prerelease-type": "alpha",
       "extra-files": [
