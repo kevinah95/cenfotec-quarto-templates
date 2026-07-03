@@ -1,6 +1,6 @@
 # Plantilla de Asignaciones - Universidad CENFOTEC
 
-Plantilla Quarto para crear asignaciones de actividades académicas con formato profesional en PDF.
+Plantilla Quarto para crear asignaciones de actividades académicas con formato profesional en PDF a través de Typst.
 
 ## 📦 Instalación
 

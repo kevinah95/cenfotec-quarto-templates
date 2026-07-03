@@ -1,6 +1,6 @@
 # Slides Basic Theme - Universidad CENFOTEC
 
-Tema base de presentaciones RevealJS con identidad visual de la Universidad CENFOTEC. Incluye logo institucional, fondos personalizados y estilos SCSS adaptados.
+Tema base de presentaciones RevealJS con la identidad visual de la Universidad CENFOTEC. Incluye logo institucional, fondos personalizados y estilos SCSS adaptados.
 
 ## Instalación
 
