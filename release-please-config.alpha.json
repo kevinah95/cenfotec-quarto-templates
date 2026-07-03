@@ -5,6 +5,9 @@
       "component": "assigment",
       "release-type": "simple",
       "changelog-path": "CHANGELOG.md",
+      "versioning": "prerelease",
+      "prerelease": true,
+      "prerelease-type": "alpha",
       "extra-files": [
         {
           "type": "yaml",
@@ -17,6 +20,9 @@
       "component": "slides-basic",
       "release-type": "simple",
       "changelog-path": "CHANGELOG.md",
+      "versioning": "prerelease",
+      "prerelease": true,
+      "prerelease-type": "alpha",
       "extra-files": [
         {
           "type": "yaml",

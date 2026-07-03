@@ -1,0 +1,52 @@
+name: sync-alpha-manifest
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.release-please-manifest.json'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: alpha
+          fetch-depth: 0
+
+      - name: Sync alpha manifest with main versions
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Get main's manifest versions
+          git show origin/main:.release-please-manifest.json > /tmp/main-manifest.json
+
+          # Update alpha manifest: for each key in the alpha manifest,
+          # take the version from main if it exists (to stay >= main)
+          jq -s '
+            .[0] as $main |
+            .[1] |
+            to_entries |
+            map(
+              if $main[.key] != null then
+                .value = $main[.key]
+              else
+                .
+              end
+            ) |
+            from_entries
+          ' /tmp/main-manifest.json .release-please-manifest.alpha.json > /tmp/alpha-manifest.json
+
+          mv /tmp/alpha-manifest.json .release-please-manifest.alpha.json
+
+          # Only commit if there are changes
+          if git diff --quiet .release-please-manifest.alpha.json; then
+            echo "Alpha manifest already in sync with main"
+          else
+            git add .release-please-manifest.alpha.json
+            git commit -m "chore: sync alpha manifest with main release versions"
+            git push origin alpha
+          fi
