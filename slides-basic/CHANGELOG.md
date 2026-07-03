@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.1.0](https://github.com/kevinah95/cenfotec-quarto-templates/compare/slides-basic-v1.0.3...slides-basic-v1.1.0) (2026-07-03)
+
+
+### Features
+
+* **slides-basic:** add slides basic theme revealjs extension ([554c7d4](https://github.com/kevinah95/cenfotec-quarto-templates/commit/554c7d48992336f254b48dcd545a2bbd4c338295))
+
+
+### Bug Fixes
+
+* **assigment:** align list styles and fix multi-line parsing in template ([19d1180](https://github.com/kevinah95/cenfotec-quarto-templates/commit/19d1180c0031a9c04b6e3b85cc0219c6bb447966))
+* **assigment:** mention Typst in README description ([6da6edf](https://github.com/kevinah95/cenfotec-quarto-templates/commit/6da6edf98303e96d1ecc2458ff4c1147fb5aa5be))
+* **slides-basic:** 🐛 Correct background image path in SCSS and update template format ([d72a3f0](https://github.com/kevinah95/cenfotec-quarto-templates/commit/d72a3f0d5e5e20d71daba291cec53d5b516ad812))
+* **slides-basic:** 🐛 Update background image path and ensure resources are correctly listed ([a27eb8a](https://github.com/kevinah95/cenfotec-quarto-templates/commit/a27eb8a30f23501a5b5f2b68a19b8a5d7da37d30))
+* **slides-basic:** refine wording in README description ([6da6edf](https://github.com/kevinah95/cenfotec-quarto-templates/commit/6da6edf98303e96d1ecc2458ff4c1147fb5aa5be))
+* **slides-basic:** update README description for clarity ([65855a8](https://github.com/kevinah95/cenfotec-quarto-templates/commit/65855a8f6b65ae70abfb40eb834c4c8e28a6ab21))
+
 ## [1.0.3-alpha](https://github.com/kevinah95/cenfotec-quarto-templates/compare/slides-basic-v1.0.2...slides-basic-v1.0.3-alpha) (2026-07-03)
 
 
