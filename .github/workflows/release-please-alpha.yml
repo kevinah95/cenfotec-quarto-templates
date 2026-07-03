@@ -17,5 +17,5 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           config-file: release-please-config.alpha.json
-          manifest-file: .release-please-manifest.alpha.json
+          manifest-file: .release-please-manifest.json
           target-branch: alpha
