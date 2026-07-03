@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3-alpha](https://github.com/kevinah95/cenfotec-quarto-templates/compare/slides-basic-v1.0.2...slides-basic-v1.0.3-alpha) (2026-07-03)
+
+
+### Bug Fixes
+
+* **slides-basic:** update README description for clarity ([65855a8](https://github.com/kevinah95/cenfotec-quarto-templates/commit/65855a8f6b65ae70abfb40eb834c4c8e28a6ab21))
+
 ## [1.0.2](https://github.com/kevinah95/cenfotec-quarto-templates/compare/slides-basic-v1.0.1...slides-basic-v1.0.2) (2026-06-30)
 
 
